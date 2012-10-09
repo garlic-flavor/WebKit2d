@@ -1,17 +1,15 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
 
 // Apple's Original License
 /*
- * Copyright (c) 2003 Apple Computer, Inc. All rights reserved.
+ * Copyright (c) 2012 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
- * 
- * Copyright (c) 1999-2003 Apple Computer, Inc.  All Rights Reserved.
  * 
  * This file contains Original Code and/or Modifications of Original Code
  * as defined in and that are subject to the Apple Public Source License
@@ -30,9 +28,11 @@
  * 
  * @APPLE_LICENSE_HEADER_END@
  */
+
 /*	CFBag.h
-	Copyright (c) 1998-2003, Apple, Inc. All rights reserved.
+	Copyright (c) 1998-2012, Apple Inc. All rights reserved.
 */
+
 module CoreFoundation.CFBag;
 
 import CoreFoundation.CFBase;
@@ -62,36 +62,36 @@ alias void __CFBag;
 alias const(__CFBag)* CFBagRef;
 alias __CFBag* CFMutableBagRef;
 
-extern(C) CFTypeID CFBagGetTypeID();
+CFTypeID CFBagGetTypeID();
 
-extern(C) CFBagRef CFBagCreate(CFAllocatorRef allocator, const(void)** values, CFIndex numValues, const CFBagCallBacks* callBacks);
+CFBagRef CFBagCreate(CFAllocatorRef allocator, const(void)** values, CFIndex numValues, const CFBagCallBacks* callBacks);
 
-extern(C) CFBagRef CFBagCreateCopy(CFAllocatorRef allocator, CFBagRef theBag);
+CFBagRef CFBagCreateCopy(CFAllocatorRef allocator, CFBagRef theBag);
 
-extern(C) CFMutableBagRef CFBagCreateMutable(CFAllocatorRef allocator, CFIndex capacity, const(CFBagCallBacks)* callBacks);
+CFMutableBagRef CFBagCreateMutable(CFAllocatorRef allocator, CFIndex capacity, const(CFBagCallBacks)* callBacks);
 
-extern(C) CFMutableBagRef CFBagCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFBagRef theBag);
+CFMutableBagRef CFBagCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFBagRef theBag);
 
-extern(C) CFIndex CFBagGetCount(CFBagRef theBag);
+CFIndex CFBagGetCount(CFBagRef theBag);
 
-extern(C) CFIndex CFBagGetCountOfValue(CFBagRef theBag, const(void)* value);
+CFIndex CFBagGetCountOfValue(CFBagRef theBag, const(void)* value);
 
-extern(C) Boolean CFBagContainsValue(CFBagRef theBag, const(void)* value);
+Boolean CFBagContainsValue(CFBagRef theBag, const(void)* value);
 
-extern(C) const(void)* CFBagGetValue(CFBagRef theBag, const(void)* value);
+const(void)* CFBagGetValue(CFBagRef theBag, const(void)* value);
 
-extern(C) Boolean CFBagGetValueIfPresent(CFBagRef theBag, const(void)* candidate, const(void)** value);
+Boolean CFBagGetValueIfPresent(CFBagRef theBag, const(void)* candidate, const(void)** value);
 
-extern(C) void CFBagGetValues(CFBagRef theBag, const(void)** values);
+void CFBagGetValues(CFBagRef theBag, const(void)** values);
 
-extern(C) void CFBagApplyFunction(CFBagRef theBag, CFBagApplierFunction applier, void* context);
+void CFBagApplyFunction(CFBagRef theBag, CFBagApplierFunction applier, void* context);
 
-extern(C) void CFBagAddValue(CFMutableBagRef theBag, const(void)* value);
+void CFBagAddValue(CFMutableBagRef theBag, const(void)* value);
 
-extern(C) void CFBagReplaceValue(CFMutableBagRef theBag, const(void)* value);
+void CFBagReplaceValue(CFMutableBagRef theBag, const(void)* value);
 
-extern(C) void CFBagSetValue(CFMutableBagRef theBag, const(void)* value);
+void CFBagSetValue(CFMutableBagRef theBag, const(void)* value);
 
-extern(C) void CFBagRemoveValue(CFMutableBagRef theBag, const(void)* value);
+void CFBagRemoveValue(CFMutableBagRef theBag, const(void)* value);
 
-extern(C) void CFBagRemoveAllValues(CFMutableBagRef theBag);
+void CFBagRemoveAllValues(CFMutableBagRef theBag);

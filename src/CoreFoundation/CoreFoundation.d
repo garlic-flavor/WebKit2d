@@ -1,13 +1,13 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
 
 // Apple's Original License
 /*
- * Copyright (c) 2008 Apple Inc. All rights reserved.
+ * Copyright (c) 2012 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
  * 
@@ -28,8 +28,9 @@
  * 
  * @APPLE_LICENSE_HEADER_END@
  */
+
 /*	CoreFoundation.h
-	Copyright (c) 1998-2007, Apple Inc. All rights reserved.
+	Copyright (c) 1998-2012, Apple Inc. All rights reserved.
 */
 
 module CoreFoundation.CoreFoundation;
@@ -40,7 +41,6 @@ public import CoreFoundation.CFArray;
 public import CoreFoundation.CFBag;
 public import CoreFoundation.CFBinaryHeap;
 public import CoreFoundation.CFBitVector;
-public import CoreFoundation.CFBundle;
 public import CoreFoundation.CFByteOrder;
 public import CoreFoundation.CFCalendar;
 public import CoreFoundation.CFCharacterSet;
@@ -50,18 +50,13 @@ public import CoreFoundation.CFDateFormatter;
 public import CoreFoundation.CFDictionary;
 public import CoreFoundation.CFError;
 public import CoreFoundation.CFLocale;
-public import CoreFoundation.CFLogUtilities;
-public import CoreFoundation.CFMachPort;
-public import CoreFoundation.CFMessagePort;
+//public import CoreFoundation.CFLogUtilities;
+//public import CoreFoundation.CFMachPort;
 public import CoreFoundation.CFNumber;
 public import CoreFoundation.CFNumberFormatter;
-public import CoreFoundation.CFPlugIn;
 public import CoreFoundation.CFPreferences;
 public import CoreFoundation.CFPropertyList;
-public import CoreFoundation.CFRunLoop;
 public import CoreFoundation.CFSet;
-public import CoreFoundation.CFSocket;
-public import CoreFoundation.CFStream;
 public import CoreFoundation.CFString;
 public import CoreFoundation.CFStringEncodingExt;
 public import CoreFoundation.CFTimeZone;
@@ -69,5 +64,19 @@ public import CoreFoundation.CFTree;
 public import CoreFoundation.CFURL;
 public import CoreFoundation.CFURLAccess;
 public import CoreFoundation.CFUUID;
-public import CoreFoundation.CFXMLNode;
-public import CoreFoundation.CFXMLParser;
+public import CoreFoundation.CFUtilities;
+
+version( OSX )
+{
+//public import CoreFoundation.CFBundle;
+//public import CoreFoundation.CFMessagePort;
+//public import CoreFoundation.CFPlugIn;
+//public import CoreFoundation.CFRunLoop;
+//public import CoreFoundation.CFStream;
+//public import CoreFoundation.CFSocket;
+
+//public import CoreFoundation.CFUserNotification;
+//public import CoreFoundation.CFXMLNode;
+//public import CoreFoundation.CFXMLParser;
+}
+

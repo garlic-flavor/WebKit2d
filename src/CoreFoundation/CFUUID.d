@@ -1,13 +1,13 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
 
 // Apple's Original License
 /*
- * Copyright (c) 2008 Apple Inc. All rights reserved.
+ * Copyright (c) 2012 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
  * 
@@ -28,8 +28,9 @@
  * 
  * @APPLE_LICENSE_HEADER_END@
  */
+
 /*	CFUUID.h
-	Copyright (c) 1999-2007, Apple Inc.  All rights reserved.
+	Copyright (c) 1999-2012, Apple Inc.  All rights reserved.
 */
 
 module CoreFoundation.CFUUID;
@@ -62,20 +63,20 @@ struct CFUUIDBytes
     UInt8 byte15;
 }
 
-extern(C) CFTypeID CFUUIDGetTypeID();
+CFTypeID CFUUIDGetTypeID();
 
-extern(C) CFUUIDRef CFUUIDCreate(CFAllocatorRef alloc);
+CFUUIDRef CFUUIDCreate(CFAllocatorRef alloc);
 
-extern(C) CFUUIDRef CFUUIDCreateWithBytes(CFAllocatorRef alloc, UInt8 byte0, UInt8 byte1, UInt8 byte2, UInt8 byte3, UInt8 byte4, UInt8 byte5, UInt8 byte6, UInt8 byte7, UInt8 byte8, UInt8 byte9, UInt8 byte10, UInt8 byte11, UInt8 byte12, UInt8 byte13, UInt8 byte14, UInt8 byte15);
+CFUUIDRef CFUUIDCreateWithBytes(CFAllocatorRef alloc, UInt8 byte0, UInt8 byte1, UInt8 byte2, UInt8 byte3, UInt8 byte4, UInt8 byte5, UInt8 byte6, UInt8 byte7, UInt8 byte8, UInt8 byte9, UInt8 byte10, UInt8 byte11, UInt8 byte12, UInt8 byte13, UInt8 byte14, UInt8 byte15);
 
 
-extern(C) CFUUIDRef CFUUIDCreateFromString(CFAllocatorRef alloc, CFStringRef uuidStr);
+CFUUIDRef CFUUIDCreateFromString(CFAllocatorRef alloc, CFStringRef uuidStr);
 
-extern(C) CFStringRef CFUUIDCreateString(CFAllocatorRef alloc, CFUUIDRef uuid);
+CFStringRef CFUUIDCreateString(CFAllocatorRef alloc, CFUUIDRef uuid);
 
-extern(C) CFUUIDRef CFUUIDGetConstantUUIDWithBytes(CFAllocatorRef alloc, UInt8 byte0, UInt8 byte1, UInt8 byte2, UInt8 byte3, UInt8 byte4, UInt8 byte5, UInt8 byte6, UInt8 byte7, UInt8 byte8, UInt8 byte9, UInt8 byte10, UInt8 byte11, UInt8 byte12, UInt8 byte13, UInt8 byte14, UInt8 byte15);
+CFUUIDRef CFUUIDGetConstantUUIDWithBytes(CFAllocatorRef alloc, UInt8 byte0, UInt8 byte1, UInt8 byte2, UInt8 byte3, UInt8 byte4, UInt8 byte5, UInt8 byte6, UInt8 byte7, UInt8 byte8, UInt8 byte9, UInt8 byte10, UInt8 byte11, UInt8 byte12, UInt8 byte13, UInt8 byte14, UInt8 byte15);
 
-extern(C) CFUUIDBytes CFUUIDGetUUIDBytes(CFUUIDRef uuid);
+CFUUIDBytes CFUUIDGetUUIDBytes(CFUUIDRef uuid);
 
-extern(C) CFUUIDRef CFUUIDCreateFromUUIDBytes(CFAllocatorRef alloc, CFUUIDBytes bytes);
+CFUUIDRef CFUUIDCreateFromUUIDBytes(CFAllocatorRef alloc, CFUUIDBytes bytes);
 

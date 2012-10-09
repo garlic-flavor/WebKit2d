@@ -1,13 +1,13 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
 
 // Apple's Original License
 /*
- * Copyright (c) 2008 Apple Inc. All rights reserved.
+ * Copyright (c) 2012 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
  * 
@@ -28,8 +28,9 @@
  * 
  * @APPLE_LICENSE_HEADER_END@
  */
+
 /*	CFStringEncodingExt.h
-	Copyright (c) 1998-2007, Apple Inc. All rights reserved.
+	Copyright (c) 1998-2012, Apple Inc. All rights reserved.
 */
 
 module CoreFoundation.CFStringEncodingExt;

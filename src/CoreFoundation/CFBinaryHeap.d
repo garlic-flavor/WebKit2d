@@ -1,12 +1,13 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
+
 // Apple's Original License
 /*
- * Copyright (c) 2010 Apple Inc. All rights reserved.
+ * Copyright (c) 2012 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
  * 
@@ -29,9 +30,8 @@
  */
 
 /*	CFBinaryHeap.h
-	Copyright (c) 1998-2009, Apple Inc. All rights reserved.
+	Copyright (c) 1998-2012, Apple Inc. All rights reserved.
 */
-
 module CoreFoundation.CFBinaryHeap;
 
 import CoreFoundation.CFBase;
@@ -62,28 +62,28 @@ alias extern(C) void function(const(void)* val, void* context) CFBinaryHeapAppli
 alias void __CFBinaryHeap;
 alias __CFBinaryHeap* CFBinaryHeapRef;
 
-extern(C) CFTypeID FBinaryHeapGetTypeID();
+CFTypeID FBinaryHeapGetTypeID();
 
-extern(C) CFBinaryHeapRef CFBinaryHeapCreate(CFAllocatorRef allocator, CFIndex capacity, const(CFBinaryHeapCallBacks)* callBacks, const(CFBinaryHeapCompareContext)* compareContext);
+CFBinaryHeapRef CFBinaryHeapCreate(CFAllocatorRef allocator, CFIndex capacity, const(CFBinaryHeapCallBacks)* callBacks, const(CFBinaryHeapCompareContext)* compareContext);
 
-extern(C) CFBinaryHeapRef CFBinaryHeapCreateCopy(CFAllocatorRef allocator, CFIndex capacity, CFBinaryHeapRef heap);
+CFBinaryHeapRef CFBinaryHeapCreateCopy(CFAllocatorRef allocator, CFIndex capacity, CFBinaryHeapRef heap);
 
-extern(C) CFIndex CFBinaryHeapGetCount(CFBinaryHeapRef heap);
+CFIndex CFBinaryHeapGetCount(CFBinaryHeapRef heap);
 
-extern(C) CFIndex CFBinaryHeapGetCountOfValue(CFBinaryHeapRef heap, const(void)* value);
+CFIndex CFBinaryHeapGetCountOfValue(CFBinaryHeapRef heap, const(void)* value);
 
-extern(C) Boolean CFBinaryHeapContainsValue(CFBinaryHeapRef heap, const(void)* value);
+Boolean CFBinaryHeapContainsValue(CFBinaryHeapRef heap, const(void)* value);
 
-extern(C) const(void)* FBinaryHeapGetMinimum(CFBinaryHeapRef heap);
+const(void)* FBinaryHeapGetMinimum(CFBinaryHeapRef heap);
 
-extern(C) Boolean CFBinaryHeapGetMinimumIfPresent(CFBinaryHeapRef heap, const(void)** value);
+Boolean CFBinaryHeapGetMinimumIfPresent(CFBinaryHeapRef heap, const(void)** value);
 
-extern(C) void CFBinaryHeapGetValues(CFBinaryHeapRef heap, const(void)** values);
+void CFBinaryHeapGetValues(CFBinaryHeapRef heap, const(void)** values);
 
-extern(C) void CFBinaryHeapApplyFunction(CFBinaryHeapRef heap, CFBinaryHeapApplierFunction applier, void* context);
+void CFBinaryHeapApplyFunction(CFBinaryHeapRef heap, CFBinaryHeapApplierFunction applier, void* context);
 
-extern(C) void CFBinaryHeapAddValue(CFBinaryHeapRef heap, const(void)* value);
+void CFBinaryHeapAddValue(CFBinaryHeapRef heap, const(void)* value);
 
-extern(C) void CFBinaryHeapRemoveMinimumValue(CFBinaryHeapRef heap);
+void CFBinaryHeapRemoveMinimumValue(CFBinaryHeapRef heap);
 
-extern(C) void CFBinaryHeapRemoveAllValues(CFBinaryHeapRef heap);
+void CFBinaryHeapRemoveAllValues(CFBinaryHeapRef heap);

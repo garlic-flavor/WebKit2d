@@ -1,13 +1,13 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
 
 // Apple's Original License
 /*
- * Copyright (c) 2009 Apple Inc. All rights reserved.
+ * Copyright (c) 2012 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
  * 
@@ -28,10 +28,10 @@
  * 
  * @APPLE_LICENSE_HEADER_END@
  */
-/*	CFData.h
-	Copyright (c) 1998-2009, Apple Inc. All rights reserved.
-*/
 
+/*	CFData.h
+	Copyright (c) 1998-2012, Apple Inc. All rights reserved.
+*/
 module CoreFoundation.CFData;
 
 import CoreFoundation.CFBase;
@@ -42,35 +42,35 @@ alias void __CFData;
 alias const(__CFData)* CFDataRef;
 alias  __CFData* CFMutableDataRef;
 
-extern(C) CFTypeID CFDataGetTypeID();
+CFTypeID CFDataGetTypeID();
 
-extern(C) CFDataRef CFDataCreate(CFAllocatorRef allocator, const(UInt8)* bytes, CFIndex length);
+CFDataRef CFDataCreate(CFAllocatorRef allocator, const(UInt8)* bytes, CFIndex length);
 
-extern(C) CFDataRef CFDataCreateWithBytesNoCopy(CFAllocatorRef allocator, const(UInt8)* bytes, CFIndex length, CFAllocatorRef bytesDeallocator);
+CFDataRef CFDataCreateWithBytesNoCopy(CFAllocatorRef allocator, const(UInt8)* bytes, CFIndex length, CFAllocatorRef bytesDeallocator);
 
-extern(C) CFDataRef CFDataCreateCopy(CFAllocatorRef allocator, CFDataRef theData);
+CFDataRef CFDataCreateCopy(CFAllocatorRef allocator, CFDataRef theData);
 
-extern(C) CFMutableDataRef CFDataCreateMutable(CFAllocatorRef allocator, CFIndex capacity);
+CFMutableDataRef CFDataCreateMutable(CFAllocatorRef allocator, CFIndex capacity);
 
-extern(C) CFMutableDataRef CFDataCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFDataRef theData);
+CFMutableDataRef CFDataCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFDataRef theData);
 
-extern(C) CFIndex CFDataGetLength(CFDataRef theData);
+CFIndex CFDataGetLength(CFDataRef theData);
 
-extern(C) const(UInt8)* CFDataGetBytePtr(CFDataRef theData);
+const(UInt8)* CFDataGetBytePtr(CFDataRef theData);
 
-extern(C) UInt8* CFDataGetMutableBytePtr(CFMutableDataRef theData);
+UInt8* CFDataGetMutableBytePtr(CFMutableDataRef theData);
 
-extern(C) void CFDataGetBytes(CFDataRef theData, CFRange range, UInt8* buffer);
+void CFDataGetBytes(CFDataRef theData, CFRange range, UInt8* buffer);
 
-extern(C) void CFDataSetLength(CFMutableDataRef theData, CFIndex length);
+void CFDataSetLength(CFMutableDataRef theData, CFIndex length);
 
-extern(C) void CFDataIncreaseLength(CFMutableDataRef theData, CFIndex extraLength);
+void CFDataIncreaseLength(CFMutableDataRef theData, CFIndex extraLength);
 
-extern(C) void CFDataAppendBytes(CFMutableDataRef theData, const(UInt8)* bytes, CFIndex length);
+void CFDataAppendBytes(CFMutableDataRef theData, const(UInt8)* bytes, CFIndex length);
 
-extern(C) void CFDataReplaceBytes(CFMutableDataRef theData, CFRange range, const(UInt8)* newBytes, CFIndex newLength);
+void CFDataReplaceBytes(CFMutableDataRef theData, CFRange range, const(UInt8)* newBytes, CFIndex newLength);
 
-extern(C) void CFDataDeleteBytes(CFMutableDataRef theData, CFRange range);
+void CFDataDeleteBytes(CFMutableDataRef theData, CFRange range);
 
 enum {
     kCFDataSearchBackwards = 1u << 0,
@@ -79,4 +79,4 @@ enum {
 
 alias CFOptionFlags CFDataSearchFlags;
 
-extern(C) CFRange CFDataFind(CFDataRef theData, CFDataRef dataToFind, CFRange searchRange, CFDataSearchFlags compareOptions);
+CFRange CFDataFind(CFDataRef theData, CFDataRef dataToFind, CFRange searchRange, CFDataSearchFlags compareOptions);

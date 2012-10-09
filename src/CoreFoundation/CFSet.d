@@ -1,13 +1,13 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
 
 // Apple's Original License
 /*
- * Copyright (c) 2008 Apple Inc. All rights reserved.
+ * Copyright (c) 2012 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
  * 
@@ -28,8 +28,13 @@
  * 
  * @APPLE_LICENSE_HEADER_END@
  */
+
 /*	CFSet.h
-	Copyright (c) 1998-2007, Apple Inc. All rights reserved.
+	Copyright (c) 1998-2012, Apple Inc. All rights reserved.
+*/
+/*!
+        @header CFSet
+        CFSet implements a container which stores unique values.
 */
 module CoreFoundation.CFSet;
 
@@ -56,9 +61,9 @@ struct CFSetCallBacks {
     CFSetHashCallBack   hash;
 }
 
-extern(C) extern const CFSetCallBacks kCFTypeSetCallBacks;
+extern(C) const CFSetCallBacks kCFTypeSetCallBacks;
 
-extern(C) extern const CFSetCallBacks kCFCopyStringSetCallBacks;
+extern(C) const CFSetCallBacks kCFCopyStringSetCallBacks;
 
 alias extern(C) void function(const(void)* value, void *context) CFSetApplierFunction;
 
@@ -67,37 +72,37 @@ alias const(__CFSet)* CFSetRef;
 
 alias __CFSet* CFMutableSetRef;
 
-extern(C) CFTypeID CFSetGetTypeID();
+CFTypeID CFSetGetTypeID();
 
-extern(C) CFSetRef CFSetCreate(CFAllocatorRef allocator, const(void)** values, CFIndex numValues, const CFSetCallBacks* callBacks);
+CFSetRef CFSetCreate(CFAllocatorRef allocator, const(void)** values, CFIndex numValues, const CFSetCallBacks* callBacks);
 
-extern(C) CFSetRef CFSetCreateCopy(CFAllocatorRef allocator, CFSetRef theSet);
+CFSetRef CFSetCreateCopy(CFAllocatorRef allocator, CFSetRef theSet);
 
-extern(C) CFMutableSetRef CFSetCreateMutable(CFAllocatorRef allocator, CFIndex capacity, const CFSetCallBacks* callBacks);
+CFMutableSetRef CFSetCreateMutable(CFAllocatorRef allocator, CFIndex capacity, const CFSetCallBacks* callBacks);
 
-extern(C) CFMutableSetRef CFSetCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFSetRef theSet);
+CFMutableSetRef CFSetCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFSetRef theSet);
 
-extern(C) CFIndex CFSetGetCount(CFSetRef theSet);
+CFIndex CFSetGetCount(CFSetRef theSet);
 
-extern(C) CFIndex CFSetGetCountOfValue(CFSetRef theSet, const(void)* value);
+CFIndex CFSetGetCountOfValue(CFSetRef theSet, const(void)* value);
 
-extern(C) Boolean CFSetContainsValue(CFSetRef theSet, const(void)* value);
+Boolean CFSetContainsValue(CFSetRef theSet, const(void)* value);
 
-extern(C) const(void)* CFSetGetValue(CFSetRef theSet, const(void)* value);
+const(void)* CFSetGetValue(CFSetRef theSet, const(void)* value);
 
-extern(C) Boolean CFSetGetValueIfPresent(CFSetRef theSet, const(void)* candidate, const(void)** value);
+Boolean CFSetGetValueIfPresent(CFSetRef theSet, const(void)* candidate, const(void)** value);
 
-extern(C) void CFSetGetValues(CFSetRef theSet, const(void)** values);
+void CFSetGetValues(CFSetRef theSet, const(void)** values);
 
-extern(C) void CFSetApplyFunction(CFSetRef theSet, CFSetApplierFunction applier, void* context);
+void CFSetApplyFunction(CFSetRef theSet, CFSetApplierFunction applier, void* context);
 
-extern(C) void CFSetAddValue(CFMutableSetRef theSet, const(void)* value);
+void CFSetAddValue(CFMutableSetRef theSet, const(void)* value);
 
-extern(C) void CFSetReplaceValue(CFMutableSetRef theSet, const(void)* value);
+void CFSetReplaceValue(CFMutableSetRef theSet, const(void)* value);
 
-extern(C) void CFSetSetValue(CFMutableSetRef theSet, const(void)* value);
+void CFSetSetValue(CFMutableSetRef theSet, const(void)* value);
 
-extern(C) void CFSetRemoveValue(CFMutableSetRef theSet, const(void)* value);
+void CFSetRemoveValue(CFMutableSetRef theSet, const(void)* value);
 
-extern(C) void CFSetRemoveAllValues(CFMutableSetRef theSet);
+void CFSetRemoveAllValues(CFMutableSetRef theSet);
 

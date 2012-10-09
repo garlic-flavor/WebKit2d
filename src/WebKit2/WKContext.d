@@ -1,6 +1,6 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
@@ -25,7 +25,7 @@ alias extern(C) WKTypeRef function( WKContextRef, const(void)* ) WKContextGetInj
 
 struct WKContextInjectedBundleClient {
     int                                                                 _version;
-    const void *                                                        clientInfo;
+    const(void)*                                                        clientInfo;
 
     // Version 0.
     WKContextDidReceiveMessageFromInjectedBundleCallback                didReceiveMessageFromInjectedBundle;
@@ -45,7 +45,7 @@ alias extern(C) void function( WKContextRef, const(void)* ) WKContextPopulateVis
 
 struct WKContextHistoryClient {
     int                                                                 _version;
-    const void *                                                        clientInfo;
+    const(void)*                                                        clientInfo;
     WKContextDidNavigateWithNavigationDataCallback                      didNavigateWithNavigationData;
     WKContextDidPerformClientRedirectCallback                           didPerformClientRedirect;
     WKContextDidPerformServerRedirectCallback                           didPerformServerRedirect;
@@ -97,21 +97,22 @@ struct WKContextConnectionClient
 
 enum kWKContextConnectionClientCurrentVersion = 0;
 
-enum WKProcessModel
+enum
 {
-    SharedSecondaryProcess = 0,
-    MultipleSecondaryProcesses = 1
+    kWKProcessModelSharedSecondaryProcess = 0,
+    kWKProcessModelMultipleSecondaryProcesses = 1
 }
+alias uint WKProcessModel;
 
 WKTypeID WKContextGetTypeID();
 
 WKContextRef WKContextCreate();
 WKContextRef WKContextCreateWithInjectedBundlePath(WKStringRef path);
 
-void WKContextSetInjectedBundleClient(WKContextRef context, const WKContextInjectedBundleClient* client);
-void WKContextSetHistoryClient(WKContextRef context, const WKContextHistoryClient* client);
-void WKContextSetDownloadClient(WKContextRef context, const WKContextDownloadClient* client);
-void WKContextSetConnectionClient(WKContextRef context, const WKContextConnectionClient* client);
+void WKContextSetInjectedBundleClient(WKContextRef context, const(WKContextInjectedBundleClient)* client);
+void WKContextSetHistoryClient(WKContextRef context, const(WKContextHistoryClient)* client);
+void WKContextSetDownloadClient(WKContextRef context, const(WKContextDownloadClient)* client);
+void WKContextSetConnectionClient(WKContextRef context, const(WKContextConnectionClient)* client);
 
 WKDownloadRef WKContextDownloadURLRequest(WKContextRef context, const WKURLRequestRef request);
 
@@ -142,9 +143,9 @@ WKNotificationManagerRef WKContextGetNotificationManager(WKContextRef context);
 WKPluginSiteDataManagerRef WKContextGetPluginSiteDataManager(WKContextRef context);
 WKResourceCacheManagerRef WKContextGetResourceCacheManager(WKContextRef context);
 WKVibrationRef WKContextGetVibration(WKContextRef context);
-    
+
 alias extern(C) void function(WKDictionaryRef statistics, WKErrorRef error, void* functionContext) WKContextGetStatisticsFunction;
 void WKContextGetStatistics(WKContextRef context, void* functionContext, WKContextGetStatisticsFunction);
-    
+
 void WKContextGarbageCollectJavaScriptObjects(WKContextRef context);
 void WKContextSetJavaScriptGarbageCollectorTimerEnabled(WKContextRef context, bool enable);

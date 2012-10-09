@@ -1,13 +1,13 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
 
 // Apple's Original License
 /*
- * Copyright (c) 2008 Apple Inc. All rights reserved.
+ * Copyright (c) 2012 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
  * 
@@ -28,8 +28,9 @@
  * 
  * @APPLE_LICENSE_HEADER_END@
  */
+
 /*	CFDateFormatter.h
-	Copyright (c) 2003-2007, Apple Inc. All rights reserved.
+	Copyright (c) 2003-2012, Apple Inc. All rights reserved.
 */
 
 module CoreFoundation.CFDateFormatter;
@@ -43,7 +44,7 @@ extern(C):
 alias void __CFDateFormatter;
 alias __CFDateFormatter* CFDateFormatterRef;
 
-extern(C) CFTypeID CFDateFormatterGetTypeID();
+CFTypeID CFDateFormatterGetTypeID();
 
 enum {	// date and time format styles
 	kCFDateFormatterNoStyle = 0,
@@ -54,29 +55,29 @@ enum {	// date and time format styles
 }
 alias CFIndex CFDateFormatterStyle;
 
-extern(C) CFDateFormatterRef CFDateFormatterCreate(CFAllocatorRef allocator, CFLocaleRef locale, CFDateFormatterStyle dateStyle, CFDateFormatterStyle timeStyle);
+CFDateFormatterRef CFDateFormatterCreate(CFAllocatorRef allocator, CFLocaleRef locale, CFDateFormatterStyle dateStyle, CFDateFormatterStyle timeStyle);
 
-extern(C) CFLocaleRef CFDateFormatterGetLocale(CFDateFormatterRef formatter);
+CFLocaleRef CFDateFormatterGetLocale(CFDateFormatterRef formatter);
 
-extern(C) CFDateFormatterStyle CFDateFormatterGetDateStyle(CFDateFormatterRef formatter);
+CFDateFormatterStyle CFDateFormatterGetDateStyle(CFDateFormatterRef formatter);
 
-extern(C) CFDateFormatterStyle CFDateFormatterGetTimeStyle(CFDateFormatterRef formatter);
+CFDateFormatterStyle CFDateFormatterGetTimeStyle(CFDateFormatterRef formatter);
 
-extern(C) CFStringRef CFDateFormatterGetFormat(CFDateFormatterRef formatter);
+CFStringRef CFDateFormatterGetFormat(CFDateFormatterRef formatter);
 
-extern(C) void CFDateFormatterSetFormat(CFDateFormatterRef formatter, CFStringRef formatString);
+void CFDateFormatterSetFormat(CFDateFormatterRef formatter, CFStringRef formatString);
 
-extern(C) CFStringRef CFDateFormatterCreateStringWithDate(CFAllocatorRef allocator, CFDateFormatterRef formatter, CFDateRef date);
+CFStringRef CFDateFormatterCreateStringWithDate(CFAllocatorRef allocator, CFDateFormatterRef formatter, CFDateRef date);
 
-extern(C) CFStringRef CFDateFormatterCreateStringWithAbsoluteTime(CFAllocatorRef allocator, CFDateFormatterRef formatter, CFAbsoluteTime at);
+CFStringRef CFDateFormatterCreateStringWithAbsoluteTime(CFAllocatorRef allocator, CFDateFormatterRef formatter, CFAbsoluteTime at);
 
-extern(C) CFDateRef CFDateFormatterCreateDateFromString(CFAllocatorRef allocator, CFDateFormatterRef formatter, CFStringRef string, CFRange* rangep);
+CFDateRef CFDateFormatterCreateDateFromString(CFAllocatorRef allocator, CFDateFormatterRef formatter, CFStringRef string, CFRange* rangep);
 
-extern(C) Boolean CFDateFormatterGetAbsoluteTimeFromString(CFDateFormatterRef formatter, CFStringRef string, CFRange* rangep, CFAbsoluteTime* atp);
+Boolean CFDateFormatterGetAbsoluteTimeFromString(CFDateFormatterRef formatter, CFStringRef string, CFRange* rangep, CFAbsoluteTime* atp);
 
-extern(C) void CFDateFormatterSetProperty(CFDateFormatterRef formatter, CFStringRef key, CFTypeRef value);
+void CFDateFormatterSetProperty(CFDateFormatterRef formatter, CFStringRef key, CFTypeRef value);
 
-extern(C) CFTypeRef CFDateFormatterCopyProperty(CFDateFormatterRef formatter, CFStringRef key);
+CFTypeRef CFDateFormatterCopyProperty(CFDateFormatterRef formatter, CFStringRef key);
 
 extern(C) extern const CFStringRef kCFDateFormatterIsLenient;	// CFBoolean
 extern(C) extern const CFStringRef kCFDateFormatterTimeZone;		// CFTimeZone

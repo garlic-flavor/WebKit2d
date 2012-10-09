@@ -1,13 +1,13 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
 
 // Apple's Original License
 /*
- * Copyright (c) 2008 Apple Inc. All rights reserved.
+ * Copyright (c) 2012 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
  * 
@@ -28,8 +28,9 @@
  * 
  * @APPLE_LICENSE_HEADER_END@
  */
+
 /*	CFTimeZone.h
-	Copyright (c) 1998-2007, Apple Inc. All rights reserved.
+	Copyright (c) 1998-2012, Apple Inc. All rights reserved.
 */
 module CoreFoundation.CFTimeZone;
 
@@ -39,56 +40,57 @@ import CoreFoundation.CFData;
 import CoreFoundation.CFDate;
 import CoreFoundation.CFDictionary;
 import CoreFoundation.CFString;
+import CoreFoundation.CFLocale;
 
 extern(C):
 
-extern(C) CFTypeID CFTimeZoneGetTypeID();
+CFTypeID CFTimeZoneGetTypeID();
 
-extern(C) CFTimeZoneRef CFTimeZoneCopySystem();
+CFTimeZoneRef CFTimeZoneCopySystem();
 
-extern(C) void CFTimeZoneResetSystem();
+void CFTimeZoneResetSystem();
 
-extern(C) CFTimeZoneRef CFTimeZoneCopyDefault();
+CFTimeZoneRef CFTimeZoneCopyDefault();
 
-extern(C) void CFTimeZoneSetDefault(CFTimeZoneRef tz);
+void CFTimeZoneSetDefault(CFTimeZoneRef tz);
 
-extern(C) CFArrayRef CFTimeZoneCopyKnownNames();
+CFArrayRef CFTimeZoneCopyKnownNames();
 
-extern(C) CFDictionaryRef CFTimeZoneCopyAbbreviationDictionary();
+CFDictionaryRef CFTimeZoneCopyAbbreviationDictionary();
 
-extern(C) void CFTimeZoneSetAbbreviationDictionary(CFDictionaryRef dict);
+void CFTimeZoneSetAbbreviationDictionary(CFDictionaryRef dict);
 
-extern(C) CFTimeZoneRef CFTimeZoneCreate(CFAllocatorRef allocator, CFStringRef name, CFDataRef data);
+CFTimeZoneRef CFTimeZoneCreate(CFAllocatorRef allocator, CFStringRef name, CFDataRef data);
 
-extern(C) CFTimeZoneRef CFTimeZoneCreateWithTimeIntervalFromGMT(CFAllocatorRef allocator, CFTimeInterval ti);
+CFTimeZoneRef CFTimeZoneCreateWithTimeIntervalFromGMT(CFAllocatorRef allocator, CFTimeInterval ti);
 
-extern(C) CFTimeZoneRef CFTimeZoneCreateWithName(CFAllocatorRef allocator, CFStringRef name, Boolean tryAbbrev);
+CFTimeZoneRef CFTimeZoneCreateWithName(CFAllocatorRef allocator, CFStringRef name, Boolean tryAbbrev);
 
-extern(C) CFStringRef CFTimeZoneGetName(CFTimeZoneRef tz);
+CFStringRef CFTimeZoneGetName(CFTimeZoneRef tz);
 
-extern(C) CFDataRef CFTimeZoneGetData(CFTimeZoneRef tz);
+CFDataRef CFTimeZoneGetData(CFTimeZoneRef tz);
 
-extern(C) CFTimeInterval CFTimeZoneGetSecondsFromGMT(CFTimeZoneRef tz, CFAbsoluteTime at);
+CFTimeInterval CFTimeZoneGetSecondsFromGMT(CFTimeZoneRef tz, CFAbsoluteTime at);
 
-extern(C) CFStringRef CFTimeZoneCopyAbbreviation(CFTimeZoneRef tz, CFAbsoluteTime at);
+CFStringRef CFTimeZoneCopyAbbreviation(CFTimeZoneRef tz, CFAbsoluteTime at);
 
-extern(C) Boolean CFTimeZoneIsDaylightSavingTime(CFTimeZoneRef tz, CFAbsoluteTime at);
+Boolean CFTimeZoneIsDaylightSavingTime(CFTimeZoneRef tz, CFAbsoluteTime at);
 
-extern(C) CFTimeInterval CFTimeZoneGetDaylightSavingTimeOffset(CFTimeZoneRef tz, CFAbsoluteTime at);
+CFTimeInterval CFTimeZoneGetDaylightSavingTimeOffset(CFTimeZoneRef tz, CFAbsoluteTime at);
 
-extern(C) CFAbsoluteTime CFTimeZoneGetNextDaylightSavingTimeTransition(CFTimeZoneRef tz, CFAbsoluteTime at);
+CFAbsoluteTime CFTimeZoneGetNextDaylightSavingTimeTransition(CFTimeZoneRef tz, CFAbsoluteTime at);
 
 enum {
 	kCFTimeZoneNameStyleStandard,
 	kCFTimeZoneNameStyleShortStandard,
 	kCFTimeZoneNameStyleDaylightSaving,
-	kCFTimeZoneNameStyleShortDaylightSaving
-};
+	kCFTimeZoneNameStyleShortDaylightSaving,
+	kCFTimeZoneNameStyleGeneric,
+	kCFTimeZoneNameStyleShortGeneric
+}
 alias CFIndex CFTimeZoneNameStyle;
 
-/*
-extern(C) CFStringRef CFTimeZoneCopyLocalizedName(CFTimeZoneRef tz, CFTimeZoneNameStyle style, CFLocaleRef locale);
-*/
+CFStringRef CFTimeZoneCopyLocalizedName(CFTimeZoneRef tz, CFTimeZoneNameStyle style, CFLocaleRef locale);
 
 extern(C) extern const CFStringRef kCFTimeZoneSystemTimeZoneDidChangeNotification;
 

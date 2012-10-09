@@ -1,6 +1,6 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
@@ -44,25 +44,25 @@ alias void __CFBitVector;
 alias const(__CFBitVector)* CFBitVectorRef;
 alias __CFBitVector* CFMutableBitVectorRef;
 
-extern(C) CFTypeID CFBitVectorGetTypeID();
+CFTypeID CFBitVectorGetTypeID();
 
-extern(C) CFBitVectorRef CFBitVectorCreate(CFAllocatorRef allocator, const(UInt8)* bytes, CFIndex numBits);
-extern(C) CFBitVectorRef CFBitVectorCreateCopy(CFAllocatorRef allocator, CFBitVectorRef bv);
-extern(C) CFMutableBitVectorRef CFBitVectorCreateMutable(CFAllocatorRef allocator, CFIndex capacity);
-extern(C) CFMutableBitVectorRef CFBitVectorCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFBitVectorRef bv);
+CFBitVectorRef CFBitVectorCreate(CFAllocatorRef allocator, const(UInt8)* bytes, CFIndex numBits);
+CFBitVectorRef CFBitVectorCreateCopy(CFAllocatorRef allocator, CFBitVectorRef bv);
+CFMutableBitVectorRef CFBitVectorCreateMutable(CFAllocatorRef allocator, CFIndex capacity);
+CFMutableBitVectorRef CFBitVectorCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFBitVectorRef bv);
 
-extern(C) CFIndex CFBitVectorGetCount(CFBitVectorRef bv);
-extern(C) CFIndex CFBitVectorGetCountOfBit(CFBitVectorRef bv, CFRange range, CFBit value);
-extern(C) Boolean CFBitVectorContainsBit(CFBitVectorRef bv, CFRange range, CFBit value);
-extern(C) CFBit CFBitVectorGetBitAtIndex(CFBitVectorRef bv, CFIndex idx);
-extern(C) void CFBitVectorGetBits(CFBitVectorRef bv, CFRange range, UInt8* bytes);
-extern(C) CFIndex CFBitVectorGetFirstIndexOfBit(CFBitVectorRef bv, CFRange range, CFBit value);
-extern(C) CFIndex CFBitVectorGetLastIndexOfBit(CFBitVectorRef bv, CFRange range, CFBit value);
+CFIndex CFBitVectorGetCount(CFBitVectorRef bv);
+CFIndex CFBitVectorGetCountOfBit(CFBitVectorRef bv, CFRange range, CFBit value);
+Boolean CFBitVectorContainsBit(CFBitVectorRef bv, CFRange range, CFBit value);
+CFBit CFBitVectorGetBitAtIndex(CFBitVectorRef bv, CFIndex idx);
+void CFBitVectorGetBits(CFBitVectorRef bv, CFRange range, UInt8* bytes);
+CFIndex CFBitVectorGetFirstIndexOfBit(CFBitVectorRef bv, CFRange range, CFBit value);
+CFIndex CFBitVectorGetLastIndexOfBit(CFBitVectorRef bv, CFRange range, CFBit value);
 
-extern(C) void CFBitVectorSetCount(CFMutableBitVectorRef bv, CFIndex count);
-extern(C) void CFBitVectorFlipBitAtIndex(CFMutableBitVectorRef bv, CFIndex idx);
-extern(C) void CFBitVectorFlipBits(CFMutableBitVectorRef bv, CFRange range);
-extern(C) void CFBitVectorSetBitAtIndex(CFMutableBitVectorRef bv, CFIndex idx, CFBit value);
-extern(C) void CFBitVectorSetBits(CFMutableBitVectorRef bv, CFRange range, CFBit value);
-extern(C) void CFBitVectorSetAllBits(CFMutableBitVectorRef bv, CFBit value);
+void CFBitVectorSetCount(CFMutableBitVectorRef bv, CFIndex count);
+void CFBitVectorFlipBitAtIndex(CFMutableBitVectorRef bv, CFIndex idx);
+void CFBitVectorFlipBits(CFMutableBitVectorRef bv, CFRange range);
+void CFBitVectorSetBitAtIndex(CFMutableBitVectorRef bv, CFIndex idx, CFBit value);
+void CFBitVectorSetBits(CFMutableBitVectorRef bv, CFRange range, CFBit value);
+void CFBitVectorSetAllBits(CFMutableBitVectorRef bv, CFBit value);
 

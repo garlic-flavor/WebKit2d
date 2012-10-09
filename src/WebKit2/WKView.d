@@ -1,6 +1,6 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
@@ -15,10 +15,11 @@ extern(C):
 struct IDropTarget{ }
 
 // Undo Client.
-enum WKViewUndoType{
+enum {
     kWKViewUndo = 0,
     kWKViewRedo = 1
-};
+}
+alias uint WKViewUndoType;
 
 alias extern(C) void function(WKViewRef, WKEditCommandRef, WKViewUndoType undoOrRedo, const void *clientInfo) WKViewRegisterEditCommandCallback;
 alias extern(C) void function(WKViewRef, const void *clientInfo) WKViewClearAllEditCommandsCallback;
@@ -36,34 +37,34 @@ struct WKViewUndoClient {
 
 enum kWKViewUndoClientCurrentVersion = 0;
 
-extern(C) WKTypeID WKViewGetTypeID();
+WKTypeID WKViewGetTypeID();
 
-extern(C) WKViewRef WKViewCreate(RECT rect, WKContextRef context, WKPageGroupRef pageGroup, HWND parentWindow);
+WKViewRef WKViewCreate(RECT rect, WKContextRef context, WKPageGroupRef pageGroup, HWND parentWindow);
 
-extern(C) HWND WKViewGetWindow(WKViewRef view);
+HWND WKViewGetWindow(WKViewRef view);
 
-extern(C) WKPageRef WKViewGetPage(WKViewRef view);
+WKPageRef WKViewGetPage(WKViewRef view);
 
-extern(C) void WKViewSetViewUndoClient(WKViewRef view, const WKViewUndoClient* client);
-extern(C) void WKViewReapplyEditCommand(WKViewRef view, WKEditCommandRef command);
-extern(C) void WKViewUnapplyEditCommand(WKViewRef view, WKEditCommandRef command);
+void WKViewSetViewUndoClient(WKViewRef view, const WKViewUndoClient* client);
+void WKViewReapplyEditCommand(WKViewRef view, WKEditCommandRef command);
+void WKViewUnapplyEditCommand(WKViewRef view, WKEditCommandRef command);
 
-extern(C) void WKViewSetParentWindow(WKViewRef view, HWND parentWindow);
-extern(C) void WKViewWindowAncestryDidChange(WKViewRef view);
-extern(C) void WKViewSetIsInWindow(WKViewRef view, bool isInWindow);
-extern(C) void WKViewSetInitialFocus(WKViewRef view, bool forward);
-extern(C) void WKViewSetScrollOffsetOnNextResize(WKViewRef view, WKSize scrollOffset);
+void WKViewSetParentWindow(WKViewRef view, HWND parentWindow);
+void WKViewWindowAncestryDidChange(WKViewRef view);
+void WKViewSetIsInWindow(WKViewRef view, bool isInWindow);
+void WKViewSetInitialFocus(WKViewRef view, bool forward);
+void WKViewSetScrollOffsetOnNextResize(WKViewRef view, WKSize scrollOffset);
 
 alias extern(C) void function(WKViewRef, HBITMAP selectionBitmap, RECT selectionRectInWindowCoordinates, bool fadeout, void*) WKViewFindIndicatorCallback;
+void WKViewSetFindIndicatorCallback(WKViewRef view, WKViewFindIndicatorCallback callback, void* context);
 
-extern(C) void WKViewSetFindIndicatorCallback(WKViewRef view, WKViewFindIndicatorCallback callback, void* context);
-extern(C) WKViewFindIndicatorCallback WKViewGetFindIndicatorCallback(WKViewRef view, void** context);
+WKViewFindIndicatorCallback WKViewGetFindIndicatorCallback(WKViewRef view, void** context);
 
-extern(C) bool WKViewIsPageOverlayInstalled(WKViewRef view);
+bool WKViewIsPageOverlayInstalled(WKViewRef view);
 
-extern(C) void WKViewSetDrawsTransparentBackground(WKViewRef view, bool drawsTransparentBackground);
-extern(C) bool WKViewDrawsTransparentBackground(WKViewRef view);
+void WKViewSetDrawsTransparentBackground(WKViewRef view, bool drawsTransparentBackground);
+bool WKViewDrawsTransparentBackground(WKViewRef view);
 
-extern(C) void WKViewSetCustomDropTarget(WKViewRef view, IDropTarget*);
+void WKViewSetCustomDropTarget(WKViewRef view, IDropTarget*);
 
 

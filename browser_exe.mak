@@ -6,7 +6,7 @@ TO_COMPILE = src\DLLLauncher\DLLLauncherMain.d
 TO_LINK = src\DLLLauncher\DLLLauncherMain.obj
 COMPILE_FLAG = -version=Unicode -version=WindowsVista -Isrc;import
 LINK_FLAG =
-EXT_LIB = lib\AdvAPI32.Lib lib\ComCtl32.Lib lib\Gdi32.Lib lib\win32.lib
+EXT_LIB = lib\AdvAPI32.Lib lib\ComCtl32.Lib lib\CoreFoundation.lib lib\Gdi32.Lib lib\WebKit.lib lib\win32.lib
 DDOC_FILE =
 FLAG =
 

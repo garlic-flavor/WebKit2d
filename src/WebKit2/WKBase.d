@@ -1,6 +1,6 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
@@ -46,6 +46,8 @@ alias void OpaqueWKRectRef;
 alias const(OpaqueWKRectRef)* WKRectRef;
 alias void OpaqueWKRenderLayer;
 alias const(OpaqueWKRenderLayer)* WKRenderLayerRef;
+alias void OpaqueWKRenderObject;
+alias const(OpaqueWKRenderObject)* WKRenderObjectRef;
 alias void OpaqueWKSecurityOrigin;
 alias const(OpaqueWKSecurityOrigin)* WKSecurityOriginRef;
 alias void OpaqueWKSerializedScriptValue;
@@ -77,6 +79,8 @@ alias void OpaqueWKBackForwardListItem;
 alias const(OpaqueWKBackForwardListItem)* WKBackForwardListItemRef;
 alias void OpaqueWKBatteryManager;
 alias const(OpaqueWKBatteryManager)* WKBatteryManagerRef;
+alias void OpaqueWKBatteryStatus;
+alias const(OpaqueWKBatteryStatus)* WKBatteryStatusRef;
 alias void OpaqueWKResourceCacheManager;
 alias const(OpaqueWKResourceCacheManager)* WKResourceCacheManagerRef;
 alias void OpaqueWKColorPickerResultListener;
@@ -123,6 +127,8 @@ alias void OpaqueWKNavigationData;
 alias const(OpaqueWKNavigationData)* WKNavigationDataRef;
 alias void OpaqueWKNetworkInfoManager;
 alias const(OpaqueWKNetworkInfoManager)* WKNetworkInfoManagerRef;
+alias void OpaqueWKNetworkInfo;
+alias const(OpaqueWKNetworkInfo)* WKNetworkInfoRef;
 alias void OpaqueWKNotification;
 alias const(OpaqueWKNotification)* WKNotificationRef;
 alias void OpaqueWKNotificationManager;
@@ -157,7 +163,7 @@ alias const(OpaqueWKBundleBackForwardList)* WKBundleBackForwardListRef;
 alias void OpaqueWKBundleBackForwardListItem;
 alias const(OpaqueWKBundleBackForwardListItem)* WKBundleBackForwardListItemRef;
 alias void OpaqueWKBundleDOMCSSStyleDeclaration;
-alias const(OpaqueWKBundleDOMCSSStyleDeclaration)* WKBundleDOMCSSStyleDeclarationRef;
+alias const(OpaqueWKBundleDOMCSSStyleDeclaration)* WKBundleCSSStyleDeclarationRef;
 alias void OpaqueWKBundleDOMWindowExtension;
 alias const(OpaqueWKBundleDOMWindowExtension)* WKBundleDOMWindowExtensionRef;
 alias void OpaqueWKBundleFrame;

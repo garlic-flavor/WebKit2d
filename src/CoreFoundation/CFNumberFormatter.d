@@ -1,13 +1,13 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
 
 // Apple's Original License
 /*
- * Copyright (c) 2010 Apple Inc. All rights reserved.
+ * Copyright (c) 2012 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
  * 
@@ -30,9 +30,8 @@
  */
 
 /*	CFNumberFormatter.h
-	Copyright (c) 2003-2009, Apple Inc. All rights reserved.
+	Copyright (c) 2003-2012, Apple Inc. All rights reserved.
 */
-
 module CoreFoundation.CFNumberFormatter;
 
 import CoreFoundation.CFBase;
@@ -44,7 +43,7 @@ extern(C):
 alias void __CFNumberFormatter;
 alias __CFNumberFormatter* CFNumberFormatterRef;
 
-extern(C) CFTypeID CFNumberFormatterGetTypeID();
+CFTypeID CFNumberFormatterGetTypeID();
 
 enum {	// number format styles
 	kCFNumberFormatterNoStyle = 0,
@@ -57,32 +56,32 @@ enum {	// number format styles
 alias CFIndex CFNumberFormatterStyle;
 
 
-extern(C) CFNumberFormatterRef CFNumberFormatterCreate(CFAllocatorRef allocator, CFLocaleRef locale, CFNumberFormatterStyle style);
+CFNumberFormatterRef CFNumberFormatterCreate(CFAllocatorRef allocator, CFLocaleRef locale, CFNumberFormatterStyle style);
 
-extern(C) CFLocaleRef CFNumberFormatterGetLocale(CFNumberFormatterRef formatter);
+CFLocaleRef CFNumberFormatterGetLocale(CFNumberFormatterRef formatter);
 
-extern(C) CFNumberFormatterStyle CFNumberFormatterGetStyle(CFNumberFormatterRef formatter);
+CFNumberFormatterStyle CFNumberFormatterGetStyle(CFNumberFormatterRef formatter);
 
-extern(C) CFStringRef CFNumberFormatterGetFormat(CFNumberFormatterRef formatter);
+CFStringRef CFNumberFormatterGetFormat(CFNumberFormatterRef formatter);
 
-extern(C) void CFNumberFormatterSetFormat(CFNumberFormatterRef formatter, CFStringRef formatString);
+void CFNumberFormatterSetFormat(CFNumberFormatterRef formatter, CFStringRef formatString);
 
-extern(C) CFStringRef CFNumberFormatterCreateStringWithNumber(CFAllocatorRef allocator, CFNumberFormatterRef formatter, CFNumberRef number);
+CFStringRef CFNumberFormatterCreateStringWithNumber(CFAllocatorRef allocator, CFNumberFormatterRef formatter, CFNumberRef number);
 
-extern(C) CFStringRef CFNumberFormatterCreateStringWithValue(CFAllocatorRef allocator, CFNumberFormatterRef formatter, CFNumberType numberType, const void *valuePtr);
+CFStringRef CFNumberFormatterCreateStringWithValue(CFAllocatorRef allocator, CFNumberFormatterRef formatter, CFNumberType numberType, const void *valuePtr);
 
 enum {
     kCFNumberFormatterParseIntegersOnly = 1	/* only parse integers */
 };
 alias CFOptionFlags CFNumberFormatterOptionFlags;
 
-extern(C) CFNumberRef CFNumberFormatterCreateNumberFromString(CFAllocatorRef allocator, CFNumberFormatterRef formatter, CFStringRef string, CFRange* rangep, CFOptionFlags options);
+CFNumberRef CFNumberFormatterCreateNumberFromString(CFAllocatorRef allocator, CFNumberFormatterRef formatter, CFStringRef string, CFRange* rangep, CFOptionFlags options);
 
-extern(C) Boolean CFNumberFormatterGetValueFromString(CFNumberFormatterRef formatter, CFStringRef string, CFRange* rangep, CFNumberType numberType, void* valuePtr);
+Boolean CFNumberFormatterGetValueFromString(CFNumberFormatterRef formatter, CFStringRef string, CFRange* rangep, CFNumberType numberType, void* valuePtr);
 
-extern(C) void CFNumberFormatterSetProperty(CFNumberFormatterRef formatter, CFStringRef key, CFTypeRef value);
+void CFNumberFormatterSetProperty(CFNumberFormatterRef formatter, CFStringRef key, CFTypeRef value);
 
-extern(C) CFTypeRef CFNumberFormatterCopyProperty(CFNumberFormatterRef formatter, CFStringRef key);
+CFTypeRef CFNumberFormatterCopyProperty(CFNumberFormatterRef formatter, CFStringRef key);
 
 extern(C) extern const CFStringRef kCFNumberFormatterCurrencyCode;		// CFString
 extern(C) extern const CFStringRef kCFNumberFormatterDecimalSeparator;	// CFString
@@ -143,4 +142,4 @@ enum {
 alias CFIndex CFNumberFormatterPadPosition;
 
 
-extern(C) Boolean CFNumberFormatterGetDecimalInfoForCurrencyCode(CFStringRef currencyCode, int* defaultFractionDigits, double* roundingIncrement);
+Boolean CFNumberFormatterGetDecimalInfoForCurrencyCode(CFStringRef currencyCode, int* defaultFractionDigits, double* roundingIncrement);

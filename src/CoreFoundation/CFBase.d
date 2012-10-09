@@ -1,12 +1,13 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
+
 // Apple's Original License
 /*
- * Copyright (c) 2008 Apple Inc. All rights reserved.
+ * Copyright (c) 2012 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
  * 
@@ -27,8 +28,9 @@
  * 
  * @APPLE_LICENSE_HEADER_END@
  */
+
 /*	CFBase.h
-	Copyright (c) 1998-2007, Apple Inc. All rights reserved.
+	Copyright (c) 1998-2012, Apple Inc. All rights reserved.
 */
 
 module CoreFoundation.CFBase;
@@ -66,6 +68,7 @@ enum NULL = null;
 enum TRUE = 1;
 enum FALSE = 0;
 
+extern(C) extern double kCFCoreFoundationVersionNumber;
 
 enum kCFCoreFoundationVersionNumber10_0 = 196.40;
 enum kCFCoreFoundationVersionNumber10_0_3 = 196.50;
@@ -109,6 +112,29 @@ enum kCFCoreFoundationVersionNumber10_4_8 = 368.27;
 enum kCFCoreFoundationVersionNumber10_4_9 = 368.28;
 enum kCFCoreFoundationVersionNumber10_4_10 = 368.28;
 enum kCFCoreFoundationVersionNumber10_4_11 = 368.31;
+enum kCFCoreFoundationVersionNumber10_5 = 476.00;
+enum kCFCoreFoundationVersionNumber10_5_1 = 476.00;
+enum kCFCoreFoundationVersionNumber10_5_2 = 476.10;
+enum kCFCoreFoundationVersionNumber10_5_3 = 476.13;
+enum kCFCoreFoundationVersionNumber10_5_4 = 476.14;
+enum kCFCoreFoundationVersionNumber10_5_5 = 476.15;
+enum kCFCoreFoundationVersionNumber10_5_6 = 476.17;
+enum kCFCoreFoundationVersionNumber10_5_7 = 476.18;
+enum kCFCoreFoundationVersionNumber10_5_8 = 476.19;
+enum kCFCoreFoundationVersionNumber10_6 = 550.00;
+enum kCFCoreFoundationVersionNumber10_6_1 = 550.00;
+enum kCFCoreFoundationVersionNumber10_6_2 = 550.13;
+enum kCFCoreFoundationVersionNumber10_6_3 = 550.19;
+enum kCFCoreFoundationVersionNumber10_6_4 = 550.29;
+enum kCFCoreFoundationVersionNumber10_6_5 = 550.42;
+enum kCFCoreFoundationVersionNumber10_6_6 = 550.42;
+enum kCFCoreFoundationVersionNumber10_6_7 = 550.42;
+enum kCFCoreFoundationVersionNumber10_6_8 = 550.43;
+enum kCFCoreFoundationVersionNumber10_7   = 635.00;
+enum kCFCoreFoundationVersionNumber10_7_1 = 635.00;
+enum kCFCoreFoundationVersionNumber10_7_2 = 635.15;
+enum kCFCoreFoundationVersionNumber10_7_3 = 635.19;
+enum kCFCoreFoundationVersionNumber10_7_4 = 635.21;
 
 
 alias uint CFTypeID;
@@ -189,41 +215,41 @@ struct  CFAllocatorContext
     CFAllocatorPreferredSizeCallBack preferredSize;
 }
 
-extern(C) CFTypeID CFAllocatorGetTypeID();
+CFTypeID CFAllocatorGetTypeID();
 
-extern(C) void CFAllocatorSetDefault(CFAllocatorRef allocator);
+void CFAllocatorSetDefault(CFAllocatorRef allocator);
 
-extern(C) CFAllocatorRef CFAllocatorGetDefault();
+CFAllocatorRef CFAllocatorGetDefault();
 
-extern(C) CFAllocatorRef CFAllocatorCreate(CFAllocatorRef allocator, CFAllocatorContext* context);
+CFAllocatorRef CFAllocatorCreate(CFAllocatorRef allocator, CFAllocatorContext* context);
 
-extern(C) void* CFAllocatorAllocate(CFAllocatorRef allocator, CFIndex size, CFOptionFlags hint);
+void* CFAllocatorAllocate(CFAllocatorRef allocator, CFIndex size, CFOptionFlags hint);
 
-extern(C) void* CFAllocatorReallocate(CFAllocatorRef allocator, void* ptr, CFIndex newsize, CFOptionFlags hint);
+void* CFAllocatorReallocate(CFAllocatorRef allocator, void* ptr, CFIndex newsize, CFOptionFlags hint);
 
-extern(C) void CFAllocatorDeallocate(CFAllocatorRef allocator, void* ptr);
+void CFAllocatorDeallocate(CFAllocatorRef allocator, void* ptr);
 
-extern(C) CFIndex CFAllocatorGetPreferredSizeForSize(CFAllocatorRef allocator, CFIndex size, CFOptionFlags hint);
+CFIndex CFAllocatorGetPreferredSizeForSize(CFAllocatorRef allocator, CFIndex size, CFOptionFlags hint);
 
-extern(C) void CFAllocatorGetContext(CFAllocatorRef allocator, CFAllocatorContext* context);
+void CFAllocatorGetContext(CFAllocatorRef allocator, CFAllocatorContext* context);
 
-extern(C) CFTypeID CFGetTypeID(CFTypeRef cf);
+CFTypeID CFGetTypeID(CFTypeRef cf);
 
-extern(C) CFStringRef CFCopyTypeIDDescription(CFTypeID type_id);
+CFStringRef CFCopyTypeIDDescription(CFTypeID type_id);
 
-extern(C) CFTypeRef CFRetain(CFTypeRef cf);
+CFTypeRef CFRetain(CFTypeRef cf);
 
-extern(C) void CFRelease(CFTypeRef cf);
+void CFRelease(CFTypeRef cf);
 
-extern(C) CFIndex CFGetRetainCount(CFTypeRef cf);
+CFIndex CFGetRetainCount(CFTypeRef cf);
 
-extern(C) CFTypeRef CFMakeCollectable(CFTypeRef cf);
+CFTypeRef CFMakeCollectable(CFTypeRef cf);
 
-extern(C) Boolean CFEqual(CFTypeRef cf1, CFTypeRef cf2);
+Boolean CFEqual(CFTypeRef cf1, CFTypeRef cf2);
 
-extern(C) CFHashCode CFHash(CFTypeRef cf);
+CFHashCode CFHash(CFTypeRef cf);
 
-extern(C) CFStringRef CFCopyDescription(CFTypeRef cf);
+CFStringRef CFCopyDescription(CFTypeRef cf);
 
-extern(C) CFAllocatorRef CFGetAllocator(CFTypeRef cf);
+CFAllocatorRef CFGetAllocator(CFTypeRef cf);
 

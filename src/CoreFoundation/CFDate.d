@@ -1,13 +1,13 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
 
 // Apple's Original License
 /*
- * Copyright (c) 2005 Apple Computer, Inc. All rights reserved.
+ * Copyright (c) 2012 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
  * 
@@ -28,8 +28,9 @@
  * 
  * @APPLE_LICENSE_HEADER_END@
  */
+
 /*	CFDate.h
-	Copyright (c) 1998-2005, Apple, Inc. All rights reserved.
+	Copyright (c) 1998-2012, Apple Inc. All rights reserved.
 */
 
 module CoreFoundation.CFDate;
@@ -41,7 +42,7 @@ extern(C):
 alias double CFTimeInterval;
 alias CFTimeInterval CFAbsoluteTime;
 
-extern(C) CFAbsoluteTime CFAbsoluteTimeGetCurrent();
+CFAbsoluteTime CFAbsoluteTimeGetCurrent();
 
 extern(C) extern const CFTimeInterval kCFAbsoluteTimeIntervalSince1970;
 extern(C) extern const CFTimeInterval kCFAbsoluteTimeIntervalSince1904;
@@ -49,15 +50,15 @@ extern(C) extern const CFTimeInterval kCFAbsoluteTimeIntervalSince1904;
 alias void __CFDate;
 alias const( __CFDate)* CFDateRef;
 
-extern(C) CFTypeID CFDateGetTypeID();
+CFTypeID CFDateGetTypeID();
 
-extern(C) CFDateRef CFDateCreate(CFAllocatorRef allocator, CFAbsoluteTime at);
+CFDateRef CFDateCreate(CFAllocatorRef allocator, CFAbsoluteTime at);
 
-extern(C) CFAbsoluteTime CFDateGetAbsoluteTime(CFDateRef theDate);
+CFAbsoluteTime CFDateGetAbsoluteTime(CFDateRef theDate);
 
-extern(C) CFTimeInterval CFDateGetTimeIntervalSinceDate(CFDateRef theDate, CFDateRef otherDate);
+CFTimeInterval CFDateGetTimeIntervalSinceDate(CFDateRef theDate, CFDateRef otherDate);
 
-extern(C) CFComparisonResult CFDateCompare(CFDateRef theDate, CFDateRef otherDate, void* context);
+CFComparisonResult CFDateCompare(CFDateRef theDate, CFDateRef otherDate, void* context);
 
 alias void __CFTimeZone;
 alias const(__CFTimeZone)* CFTimeZoneRef;
@@ -90,28 +91,21 @@ enum  CFGregorianUnitFlags
     kCFGregorianUnitsHours = (1 << 3),
     kCFGregorianUnitsMinutes = (1 << 4),
     kCFGregorianUnitsSeconds = (1 << 5),
-
-/*
-{
-    kCFGregorianUnitsTimeZone = (1 << 8),
-    kCFGregorianUnitsDayOfWeek = (1 << 9),
-}
-*/
     kCFGregorianAllUnits = 0x00FFFFFF
 }
 
-extern(C) Boolean CFGregorianDateIsValid(CFGregorianDate gdate, CFOptionFlags unitFlags);
+Boolean CFGregorianDateIsValid(CFGregorianDate gdate, CFOptionFlags unitFlags);
 
-extern(C) CFAbsoluteTime CFGregorianDateGetAbsoluteTime(CFGregorianDate gdate, CFTimeZoneRef tz);
+CFAbsoluteTime CFGregorianDateGetAbsoluteTime(CFGregorianDate gdate, CFTimeZoneRef tz);
 
-extern(C) CFGregorianDate CFAbsoluteTimeGetGregorianDate(CFAbsoluteTime at, CFTimeZoneRef tz);
+CFGregorianDate CFAbsoluteTimeGetGregorianDate(CFAbsoluteTime at, CFTimeZoneRef tz);
 
-extern(C) CFAbsoluteTime CFAbsoluteTimeAddGregorianUnits(CFAbsoluteTime at, CFTimeZoneRef tz, CFGregorianUnits units);
+CFAbsoluteTime CFAbsoluteTimeAddGregorianUnits(CFAbsoluteTime at, CFTimeZoneRef tz, CFGregorianUnits units);
 
-extern(C) CFGregorianUnits CFAbsoluteTimeGetDifferenceAsGregorianUnits(CFAbsoluteTime at1, CFAbsoluteTime at2, CFTimeZoneRef tz, CFOptionFlags unitFlags);
+CFGregorianUnits CFAbsoluteTimeGetDifferenceAsGregorianUnits(CFAbsoluteTime at1, CFAbsoluteTime at2, CFTimeZoneRef tz, CFOptionFlags unitFlags);
 
-extern(C) SInt32 CFAbsoluteTimeGetDayOfWeek(CFAbsoluteTime at, CFTimeZoneRef tz);
+SInt32 CFAbsoluteTimeGetDayOfWeek(CFAbsoluteTime at, CFTimeZoneRef tz);
 
-extern(C) SInt32 CFAbsoluteTimeGetDayOfYear(CFAbsoluteTime at, CFTimeZoneRef tz);
+SInt32 CFAbsoluteTimeGetDayOfYear(CFAbsoluteTime at, CFTimeZoneRef tz);
 
-extern(C) SInt32 CFAbsoluteTimeGetWeekOfYear(CFAbsoluteTime at, CFTimeZoneRef tz);
+SInt32 CFAbsoluteTimeGetWeekOfYear(CFAbsoluteTime at, CFTimeZoneRef tz);

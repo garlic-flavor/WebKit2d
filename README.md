@@ -11,8 +11,8 @@ Safari がインストールされている環境で実行してください。
 バイナリは全て 32Bit Windows用です。
 
 ## ヴァージョン ##
-- WebKit r129330
-- CoreFoundation 476.15
+- WebKit r130691
+- CoreFoundation 744.12
 
 を元に書かれています。
 
@@ -30,6 +30,9 @@ Safari がインストールされている環境で実行してください。
 
 
 ## 更新履歴 ##
+
+- 2012/10/10 ver 0.0002(dmd2.060)
+  WebKit と CoreFoundation を新しいのに
 
 - 2012/10/09 ver 0.0001(dmd2.060)
   first release

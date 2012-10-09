@@ -1,13 +1,13 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
 
 // Apple's Original License
 /*
- * Copyright (c) 2008 Apple Inc. All rights reserved.
+ * Copyright (c) 2012 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
  * 
@@ -28,8 +28,9 @@
  * 
  * @APPLE_LICENSE_HEADER_END@
  */
+
 /*	CFURL.h
-	Copyright (c) 1998-2007, Apple Inc. All rights reserved.
+	Copyright (c) 1998-2012, Apple Inc. All rights reserved.
 */
 
 module CoreFoundation.CFURL;
@@ -37,6 +38,7 @@ module CoreFoundation.CFURL;
 import CoreFoundation.CFBase;
 import CoreFoundation.CFData;
 import CoreFoundation.CFString;
+import CoreFoundation.CFError;
 
 extern(C):
 
@@ -50,78 +52,78 @@ alias CFIndex CFURLPathStyle;
 alias void __CFURL;
 alias const(__CFURL)* CFURLRef;
 
-extern(C) CFTypeID CFURLGetTypeID();
+CFTypeID CFURLGetTypeID();
 
-extern(C) CFURLRef CFURLCreateWithBytes(CFAllocatorRef allocator, const(UInt8)* URLBytes, CFIndex length, CFStringEncoding encoding, CFURLRef baseURL);
+CFURLRef CFURLCreateWithBytes(CFAllocatorRef allocator, const(UInt8)* URLBytes, CFIndex length, CFStringEncoding encoding, CFURLRef baseURL);
 
-extern(C) CFDataRef CFURLCreateData(CFAllocatorRef allocator, CFURLRef url, CFStringEncoding encoding, Boolean escapeWhitespace);
+CFDataRef CFURLCreateData(CFAllocatorRef allocator, CFURLRef url, CFStringEncoding encoding, Boolean escapeWhitespace);
 
-extern(C) CFURLRef CFURLCreateWithString(CFAllocatorRef allocator, CFStringRef URLString, CFURLRef baseURL);
+CFURLRef CFURLCreateWithString(CFAllocatorRef allocator, CFStringRef URLString, CFURLRef baseURL);
 
-extern(C) CFURLRef CFURLCreateAbsoluteURLWithBytes(CFAllocatorRef alloc, const(UInt8)* relativeURLBytes, CFIndex length, CFStringEncoding encoding, CFURLRef baseURL, Boolean useCompatibilityMode);
+CFURLRef CFURLCreateAbsoluteURLWithBytes(CFAllocatorRef alloc, const(UInt8)* relativeURLBytes, CFIndex length, CFStringEncoding encoding, CFURLRef baseURL, Boolean useCompatibilityMode);
 
-extern(C) CFURLRef CFURLCreateWithFileSystemPath(CFAllocatorRef allocator, CFStringRef filePath, CFURLPathStyle pathStyle, Boolean isDirectory);
+CFURLRef CFURLCreateWithFileSystemPath(CFAllocatorRef allocator, CFStringRef filePath, CFURLPathStyle pathStyle, Boolean isDirectory);
 
-extern(C) CFURLRef CFURLCreateFromFileSystemRepresentation(CFAllocatorRef allocator, const(UInt8)* buffer, CFIndex bufLen, Boolean isDirectory);
+CFURLRef CFURLCreateFromFileSystemRepresentation(CFAllocatorRef allocator, const(UInt8)* buffer, CFIndex bufLen, Boolean isDirectory);
 
-extern(C) CFURLRef CFURLCreateWithFileSystemPathRelativeToBase(CFAllocatorRef allocator, CFStringRef filePath, CFURLPathStyle pathStyle, Boolean isDirectory, CFURLRef baseURL); 
+CFURLRef CFURLCreateWithFileSystemPathRelativeToBase(CFAllocatorRef allocator, CFStringRef filePath, CFURLPathStyle pathStyle, Boolean isDirectory, CFURLRef baseURL); 
 
-extern(C) CFURLRef CFURLCreateFromFileSystemRepresentationRelativeToBase(CFAllocatorRef allocator, const(UInt8)* buffer, CFIndex bufLen, Boolean isDirectory, CFURLRef baseURL);
+CFURLRef CFURLCreateFromFileSystemRepresentationRelativeToBase(CFAllocatorRef allocator, const(UInt8)* buffer, CFIndex bufLen, Boolean isDirectory, CFURLRef baseURL);
 
-extern(C) Boolean CFURLGetFileSystemRepresentation(CFURLRef url, Boolean resolveAgainstBase, UInt8* buffer, CFIndex maxBufLen);
+Boolean CFURLGetFileSystemRepresentation(CFURLRef url, Boolean resolveAgainstBase, UInt8* buffer, CFIndex maxBufLen);
 
-extern(C) CFURLRef CFURLCopyAbsoluteURL(CFURLRef relativeURL);
+CFURLRef CFURLCopyAbsoluteURL(CFURLRef relativeURL);
 
-extern(C) CFStringRef CFURLGetString(CFURLRef anURL);
+CFStringRef CFURLGetString(CFURLRef anURL);
 
-extern(C) CFURLRef CFURLGetBaseURL(CFURLRef anURL);
+CFURLRef CFURLGetBaseURL(CFURLRef anURL);
 
-extern(C) Boolean CFURLCanBeDecomposed(CFURLRef anURL); 
-
-
-extern(C) CFStringRef CFURLCopyScheme(CFURLRef anURL);
+Boolean CFURLCanBeDecomposed(CFURLRef anURL); 
 
 
-extern(C) CFStringRef CFURLCopyNetLocation(CFURLRef anURL); 
-
-extern(C) CFStringRef CFURLCopyPath(CFURLRef anURL);
-
-extern(C) CFStringRef CFURLCopyStrictPath(CFURLRef anURL, Boolean *isAbsolute);
-
-extern(C) CFStringRef CFURLCopyFileSystemPath(CFURLRef anURL, CFURLPathStyle pathStyle);
-
-extern(C) Boolean CFURLHasDirectoryPath(CFURLRef anURL);
-
-extern(C) CFStringRef CFURLCopyResourceSpecifier(CFURLRef anURL); 
-
-extern(C) CFStringRef CFURLCopyHostName(CFURLRef anURL);
-
-extern(C) SInt32 CFURLGetPortNumber(CFURLRef anURL); /* Returns -1 if no port number is specified */
-
-extern(C) CFStringRef CFURLCopyUserName(CFURLRef anURL);
-
-extern(C) CFStringRef CFURLCopyPassword(CFURLRef anURL);
-
-extern(C) CFStringRef CFURLCopyParameterString(CFURLRef anURL, CFStringRef charactersToLeaveEscaped);
-
-extern(C) CFStringRef CFURLCopyQueryString(CFURLRef anURL, CFStringRef charactersToLeaveEscaped);
-
-extern(C) CFStringRef CFURLCopyFragment(CFURLRef anURL, CFStringRef charactersToLeaveEscaped);
-
-extern(C) CFStringRef CFURLCopyLastPathComponent(CFURLRef url);
-
-extern(C) CFStringRef CFURLCopyPathExtension(CFURLRef url);
+CFStringRef CFURLCopyScheme(CFURLRef anURL);
 
 
-extern(C) CFURLRef CFURLCreateCopyAppendingPathComponent(CFAllocatorRef allocator, CFURLRef url, CFStringRef pathComponent, Boolean isDirectory);
+CFStringRef CFURLCopyNetLocation(CFURLRef anURL); 
 
-extern(C) CFURLRef CFURLCreateCopyDeletingLastPathComponent(CFAllocatorRef allocator, CFURLRef url);
+CFStringRef CFURLCopyPath(CFURLRef anURL);
 
-extern(C) CFURLRef CFURLCreateCopyAppendingPathExtension(CFAllocatorRef allocator, CFURLRef url, CFStringRef extension);
+CFStringRef CFURLCopyStrictPath(CFURLRef anURL, Boolean *isAbsolute);
 
-extern(C) CFURLRef CFURLCreateCopyDeletingPathExtension(CFAllocatorRef allocator, CFURLRef url);
+CFStringRef CFURLCopyFileSystemPath(CFURLRef anURL, CFURLPathStyle pathStyle);
 
-extern(C) CFIndex CFURLGetBytes(CFURLRef url, UInt8* buffer, CFIndex bufferLength);
+Boolean CFURLHasDirectoryPath(CFURLRef anURL);
+
+CFStringRef CFURLCopyResourceSpecifier(CFURLRef anURL); 
+
+CFStringRef CFURLCopyHostName(CFURLRef anURL);
+
+SInt32 CFURLGetPortNumber(CFURLRef anURL); /* Returns -1 if no port number is specified */
+
+CFStringRef CFURLCopyUserName(CFURLRef anURL);
+
+CFStringRef CFURLCopyPassword(CFURLRef anURL);
+
+CFStringRef CFURLCopyParameterString(CFURLRef anURL, CFStringRef charactersToLeaveEscaped);
+
+CFStringRef CFURLCopyQueryString(CFURLRef anURL, CFStringRef charactersToLeaveEscaped);
+
+CFStringRef CFURLCopyFragment(CFURLRef anURL, CFStringRef charactersToLeaveEscaped);
+
+CFStringRef CFURLCopyLastPathComponent(CFURLRef url);
+
+CFStringRef CFURLCopyPathExtension(CFURLRef url);
+
+
+CFURLRef CFURLCreateCopyAppendingPathComponent(CFAllocatorRef allocator, CFURLRef url, CFStringRef pathComponent, Boolean isDirectory);
+
+CFURLRef CFURLCreateCopyDeletingLastPathComponent(CFAllocatorRef allocator, CFURLRef url);
+
+CFURLRef CFURLCreateCopyAppendingPathExtension(CFAllocatorRef allocator, CFURLRef url, CFStringRef extension);
+
+CFURLRef CFURLCreateCopyDeletingPathExtension(CFAllocatorRef allocator, CFURLRef url);
+
+CFIndex CFURLGetBytes(CFURLRef url, UInt8* buffer, CFIndex bufferLength);
 
 enum {
 	kCFURLComponentScheme = 1,
@@ -140,12 +142,18 @@ enum {
 };
 alias CFIndex CFURLComponentType;
 
-extern(C) CFRange CFURLGetByteRangeForComponent(CFURLRef url, CFURLComponentType component, CFRange* rangeIncludingSeparators);
+CFRange CFURLGetByteRangeForComponent(CFURLRef url, CFURLComponentType component, CFRange* rangeIncludingSeparators);
 
-extern(C) CFStringRef CFURLCreateStringByReplacingPercentEscapes(CFAllocatorRef allocator, CFStringRef originalString, CFStringRef charactersToLeaveEscaped);
+CFStringRef CFURLCreateStringByReplacingPercentEscapes(CFAllocatorRef allocator, CFStringRef originalString, CFStringRef charactersToLeaveEscaped);
 
-extern(C) CFStringRef CFURLCreateStringByReplacingPercentEscapesUsingEncoding(CFAllocatorRef allocator, CFStringRef origString, CFStringRef charsToLeaveEscaped, CFStringEncoding encoding);
+CFStringRef CFURLCreateStringByReplacingPercentEscapesUsingEncoding(CFAllocatorRef allocator, CFStringRef origString, CFStringRef charsToLeaveEscaped, CFStringEncoding encoding);
 
 
-extern(C) CFStringRef CFURLCreateStringByAddingPercentEscapes(CFAllocatorRef allocator, CFStringRef originalString, CFStringRef charactersToLeaveUnescaped, CFStringRef legalURLCharactersToBeEscaped, CFStringEncoding encoding);
+CFStringRef CFURLCreateStringByAddingPercentEscapes(CFAllocatorRef allocator, CFStringRef originalString, CFStringRef charactersToLeaveUnescaped, CFStringRef legalURLCharactersToBeEscaped, CFStringEncoding encoding);
+
+
+CFURLRef CFURLCreateFileReferenceURL(CFAllocatorRef allocator, CFURLRef url, CFErrorRef* error);
+
+CFURLRef CFURLCreateFilePathURL(CFAllocatorRef allocator, CFURLRef url, CFErrorRef* error);
+
 

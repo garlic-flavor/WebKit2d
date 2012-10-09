@@ -1,13 +1,13 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
 
 // Apple's Original License
 /*
- * Copyright (c) 2008 Apple Inc. All rights reserved.
+ * Copyright (c) 2012 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
  * 
@@ -28,8 +28,9 @@
  * 
  * @APPLE_LICENSE_HEADER_END@
  */
+
 /*	CFString.h
-	Copyright (c) 1998-2007, Apple Inc. All rights reserved.
+	Copyright (c) 1998-2012, Apple Inc. All rights reserved.
 */
 
 module CoreFoundation.CFString;
@@ -68,7 +69,7 @@ enum {
 };
 alias CFStringEncoding CFStringBuiltInEncodings;
 
-extern(C) CFTypeID CFStringGetTypeID();
+CFTypeID CFStringGetTypeID();
 
 /+ ??
 #ifdef __CONSTANT_CFSTRINGS__
@@ -78,75 +79,75 @@ extern(C) CFTypeID CFStringGetTypeID();
 #endif
 +/
 
-extern(C) CFStringRef CFStringCreateWithPascalString(CFAllocatorRef alloc, ConstStr255Param pStr, CFStringEncoding encoding);
+CFStringRef CFStringCreateWithPascalString(CFAllocatorRef alloc, ConstStr255Param pStr, CFStringEncoding encoding);
 
-extern(C) CFStringRef CFStringCreateWithCString(CFAllocatorRef alloc, const(char)* cStr, CFStringEncoding encoding);
+CFStringRef CFStringCreateWithCString(CFAllocatorRef alloc, const(char)* cStr, CFStringEncoding encoding);
 
-extern(C) CFStringRef CFStringCreateWithBytes(CFAllocatorRef alloc, const(UInt8)* bytes, CFIndex numBytes, CFStringEncoding encoding, Boolean isExternalRepresentation);
+CFStringRef CFStringCreateWithBytes(CFAllocatorRef alloc, const(UInt8)* bytes, CFIndex numBytes, CFStringEncoding encoding, Boolean isExternalRepresentation);
 
-extern(C) CFStringRef CFStringCreateWithCharacters(CFAllocatorRef alloc, const(UniChar)* chars, CFIndex numChars);
-
-
-extern(C) CFStringRef CFStringCreateWithPascalStringNoCopy(CFAllocatorRef alloc, ConstStr255Param pStr, CFStringEncoding encoding, CFAllocatorRef contentsDeallocator);
-
-extern(C) CFStringRef CFStringCreateWithCStringNoCopy(CFAllocatorRef alloc, const(char)* cStr, CFStringEncoding encoding, CFAllocatorRef contentsDeallocator);
-
-extern(C) CFStringRef CFStringCreateWithBytesNoCopy(CFAllocatorRef alloc, const(UInt8)* bytes, CFIndex numBytes, CFStringEncoding encoding, Boolean isExternalRepresentation, CFAllocatorRef contentsDeallocator);
+CFStringRef CFStringCreateWithCharacters(CFAllocatorRef alloc, const(UniChar)* chars, CFIndex numChars);
 
 
-extern(C) CFStringRef CFStringCreateWithCharactersNoCopy(CFAllocatorRef alloc, const(UniChar)* chars, CFIndex numChars, CFAllocatorRef contentsDeallocator);
+CFStringRef CFStringCreateWithPascalStringNoCopy(CFAllocatorRef alloc, ConstStr255Param pStr, CFStringEncoding encoding, CFAllocatorRef contentsDeallocator);
 
-extern(C) CFStringRef CFStringCreateWithSubstring(CFAllocatorRef alloc, CFStringRef str, CFRange range);
+CFStringRef CFStringCreateWithCStringNoCopy(CFAllocatorRef alloc, const(char)* cStr, CFStringEncoding encoding, CFAllocatorRef contentsDeallocator);
 
-extern(C) CFStringRef CFStringCreateCopy(CFAllocatorRef alloc, CFStringRef theString);
-
-extern(C) CFStringRef CFStringCreateWithFormat(CFAllocatorRef alloc, CFDictionaryRef formatOptions, CFStringRef format, ...);
-
-extern(C) CFStringRef CFStringCreateWithFormatAndArguments(CFAllocatorRef alloc, CFDictionaryRef formatOptions, CFStringRef format, va_list arguments);
-
-extern(C) CFMutableStringRef CFStringCreateMutable(CFAllocatorRef alloc, CFIndex maxLength);
-
-extern(C) CFMutableStringRef CFStringCreateMutableCopy(CFAllocatorRef alloc, CFIndex maxLength, CFStringRef theString);
-
-extern(C) CFMutableStringRef CFStringCreateMutableWithExternalCharactersNoCopy(CFAllocatorRef alloc, UniChar *chars, CFIndex numChars, CFIndex capacity, CFAllocatorRef externalCharactersAllocator);
-
-extern(C) CFIndex CFStringGetLength(CFStringRef theString);
-
-extern(C) UniChar CFStringGetCharacterAtIndex(CFStringRef theString, CFIndex idx);
-
-extern(C) void CFStringGetCharacters(CFStringRef theString, CFRange range, UniChar* buffer);
+CFStringRef CFStringCreateWithBytesNoCopy(CFAllocatorRef alloc, const(UInt8)* bytes, CFIndex numBytes, CFStringEncoding encoding, Boolean isExternalRepresentation, CFAllocatorRef contentsDeallocator);
 
 
-extern(C) Boolean CFStringGetPascalString(CFStringRef theString, StringPtr buffer, CFIndex bufferSize, CFStringEncoding encoding);
+CFStringRef CFStringCreateWithCharactersNoCopy(CFAllocatorRef alloc, const(UniChar)* chars, CFIndex numChars, CFAllocatorRef contentsDeallocator);
 
-extern(C) Boolean CFStringGetCString(CFStringRef theString, char* buffer, CFIndex bufferSize, CFStringEncoding encoding);
+CFStringRef CFStringCreateWithSubstring(CFAllocatorRef alloc, CFStringRef str, CFRange range);
 
-extern(C) ConstStringPtr CFStringGetPascalStringPtr(CFStringRef theString, CFStringEncoding encoding);	/* May return NULL at any time; be prepared for NULL */
+CFStringRef CFStringCreateCopy(CFAllocatorRef alloc, CFStringRef theString);
 
-extern(C) const(char)* CFStringGetCStringPtr(CFStringRef theString, CFStringEncoding encoding);		/* May return NULL at any time; be prepared for NULL */
+CFStringRef CFStringCreateWithFormat(CFAllocatorRef alloc, CFDictionaryRef formatOptions, CFStringRef format, ...);
 
-extern(C) const(UniChar)* CFStringGetCharactersPtr(CFStringRef theString);					/* May return NULL at any time; be prepared for NULL */
+CFStringRef CFStringCreateWithFormatAndArguments(CFAllocatorRef alloc, CFDictionaryRef formatOptions, CFStringRef format, va_list arguments);
 
-extern(C) CFIndex CFStringGetBytes(CFStringRef theString, CFRange range, CFStringEncoding encoding, UInt8 lossByte, Boolean isExternalRepresentation, UInt8* buffer, CFIndex maxBufLen, CFIndex* usedBufLen);
+CFMutableStringRef CFStringCreateMutable(CFAllocatorRef alloc, CFIndex maxLength);
 
-extern(C) CFStringRef CFStringCreateFromExternalRepresentation(CFAllocatorRef alloc, CFDataRef data, CFStringEncoding encoding);	/* May return NULL on conversion error */
+CFMutableStringRef CFStringCreateMutableCopy(CFAllocatorRef alloc, CFIndex maxLength, CFStringRef theString);
 
-extern(C) CFDataRef CFStringCreateExternalRepresentation(CFAllocatorRef alloc, CFStringRef theString, CFStringEncoding encoding, UInt8 lossByte);	/* May return NULL on conversion error */	
+CFMutableStringRef CFStringCreateMutableWithExternalCharactersNoCopy(CFAllocatorRef alloc, UniChar *chars, CFIndex numChars, CFIndex capacity, CFAllocatorRef externalCharactersAllocator);
 
-extern(C) CFStringEncoding CFStringGetSmallestEncoding(CFStringRef theString);	/* Result in O(n) time max */
+CFIndex CFStringGetLength(CFStringRef theString);
 
-extern(C) CFStringEncoding CFStringGetFastestEncoding(CFStringRef theString);	/* Result in O(1) time max */
+UniChar CFStringGetCharacterAtIndex(CFStringRef theString, CFIndex idx);
 
-extern(C) CFStringEncoding CFStringGetSystemEncoding();		/* The default encoding for the system; untagged 8-bit characters are usually in this encoding */
-
-extern(C) CFIndex CFStringGetMaximumSizeForEncoding(CFIndex length, CFStringEncoding encoding);	/* Max bytes a string of specified length (in UniChars) will take up if encoded */
+void CFStringGetCharacters(CFStringRef theString, CFRange range, UniChar* buffer);
 
 
-extern(C) Boolean CFStringGetFileSystemRepresentation(CFStringRef string, char* buffer, CFIndex maxBufLen);
+Boolean CFStringGetPascalString(CFStringRef theString, StringPtr buffer, CFIndex bufferSize, CFStringEncoding encoding);
 
-extern(C) CFIndex CFStringGetMaximumSizeOfFileSystemRepresentation(CFStringRef string);
+Boolean CFStringGetCString(CFStringRef theString, char* buffer, CFIndex bufferSize, CFStringEncoding encoding);
 
-extern(C) CFStringRef CFStringCreateWithFileSystemRepresentation(CFAllocatorRef alloc, const(char)* buffer);
+ConstStringPtr CFStringGetPascalStringPtr(CFStringRef theString, CFStringEncoding encoding);	/* May return NULL at any time; be prepared for NULL */
+
+const(char)* CFStringGetCStringPtr(CFStringRef theString, CFStringEncoding encoding);		/* May return NULL at any time; be prepared for NULL */
+
+const(UniChar)* CFStringGetCharactersPtr(CFStringRef theString);					/* May return NULL at any time; be prepared for NULL */
+
+CFIndex CFStringGetBytes(CFStringRef theString, CFRange range, CFStringEncoding encoding, UInt8 lossByte, Boolean isExternalRepresentation, UInt8* buffer, CFIndex maxBufLen, CFIndex* usedBufLen);
+
+CFStringRef CFStringCreateFromExternalRepresentation(CFAllocatorRef alloc, CFDataRef data, CFStringEncoding encoding);	/* May return NULL on conversion error */
+
+CFDataRef CFStringCreateExternalRepresentation(CFAllocatorRef alloc, CFStringRef theString, CFStringEncoding encoding, UInt8 lossByte);	/* May return NULL on conversion error */	
+
+CFStringEncoding CFStringGetSmallestEncoding(CFStringRef theString);	/* Result in O(n) time max */
+
+CFStringEncoding CFStringGetFastestEncoding(CFStringRef theString);	/* Result in O(1) time max */
+
+CFStringEncoding CFStringGetSystemEncoding();		/* The default encoding for the system; untagged 8-bit characters are usually in this encoding */
+
+CFIndex CFStringGetMaximumSizeForEncoding(CFIndex length, CFStringEncoding encoding);	/* Max bytes a string of specified length (in UniChars) will take up if encoded */
+
+
+Boolean CFStringGetFileSystemRepresentation(CFStringRef string, char* buffer, CFIndex maxBufLen);
+
+CFIndex CFStringGetMaximumSizeOfFileSystemRepresentation(CFStringRef string);
+
+CFStringRef CFStringCreateWithFileSystemRepresentation(CFAllocatorRef alloc, const(char)* buffer);
 
 
 enum {	
@@ -173,88 +174,86 @@ CFComparisonResult CFStringCompareWithOptionsAndLocale(CFStringRef theString1, C
 #endif //__WIN32__
 +/
 
-extern(C) CFComparisonResult CFStringCompareWithOptions(CFStringRef theString1, CFStringRef theString2, CFRange rangeToCompare, CFOptionFlags compareOptions);
+CFComparisonResult CFStringCompareWithOptions(CFStringRef theString1, CFStringRef theString2, CFRange rangeToCompare, CFOptionFlags compareOptions);
 
-extern(C) CFComparisonResult CFStringCompare(CFStringRef theString1, CFStringRef theString2, CFOptionFlags compareOptions);
+CFComparisonResult CFStringCompare(CFStringRef theString1, CFStringRef theString2, CFOptionFlags compareOptions);
 
-/+
-#if !defined (__WIN32__)
-#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5
-CF_EXPORT
-Boolean CFStringFindWithOptionsAndLocale(CFStringRef theString, CFStringRef stringToFind, CFRange rangeToSearch, CFOptionFlags searchOptions, CFLocaleRef locale, CFRange *result) AVAILABLE_MAC_OS_X_VERSION_10_5_AND_LATER;
-#endif /* MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_X_VERSION_10_5 */
-#endif //__WIN32__
-+/
-
-extern(C) Boolean CFStringFindWithOptions(CFStringRef theString, CFStringRef stringToFind, CFRange rangeToSearch, CFOptionFlags searchOptions, CFRange* result);
-
-extern(C) CFArrayRef CFStringCreateArrayWithFindResults(CFAllocatorRef alloc, CFStringRef theString, CFStringRef stringToFind, CFRange rangeToSearch, CFOptionFlags compareOptions);
-
-extern(C) CFRange CFStringFind(CFStringRef theString, CFStringRef stringToFind, CFOptionFlags compareOptions);
-
-extern(C) Boolean CFStringHasPrefix(CFStringRef theString, CFStringRef prefix);
-
-extern(C) Boolean CFStringHasSuffix(CFStringRef theString, CFStringRef suffix);
-
-extern(C) CFRange CFStringGetRangeOfComposedCharactersAtIndex(CFStringRef theString, CFIndex theIndex);
-
-extern(C) Boolean CFStringFindCharacterFromSet(CFStringRef theString, CFCharacterSetRef theSet, CFRange rangeToSearch, CFOptionFlags searchOptions, CFRange* result);
-
-extern(C) void CFStringGetLineBounds(CFStringRef theString, CFRange range, CFIndex* lineBeginIndex, CFIndex* lineEndIndex, CFIndex* contentsEndIndex); 
-
-extern(C) void CFStringGetParagraphBounds(CFStringRef string, CFRange range, CFIndex* parBeginIndex, CFIndex* parEndIndex, CFIndex* contentsEndIndex);
-
-extern(C) CFStringRef CFStringCreateByCombiningStrings(CFAllocatorRef alloc, CFArrayRef theArray, CFStringRef separatorString);	/* Empty array returns empty string; one element array returns the element */
-
-extern(C) CFArrayRef CFStringCreateArrayBySeparatingStrings(CFAllocatorRef alloc, CFStringRef theString, CFStringRef separatorString);	/* No separators in the string returns array with that string; string == sep returns two empty strings */
+Boolean CFStringFindWithOptionsAndLocale(CFStringRef theString, CFStringRef stringToFind, CFRange rangeToSearch, CFOptionFlags searchOptions, CFLocaleRef locale, CFRange *result);
 
 
-extern(C) SInt32 CFStringGetIntValue(CFStringRef str);		/* Skips whitespace; returns 0 on error, MAX or -MAX on overflow */
+Boolean CFStringFindWithOptions(CFStringRef theString, CFStringRef stringToFind, CFRange rangeToSearch, CFOptionFlags searchOptions, CFRange* result);
 
-extern(C) double CFStringGetDoubleValue(CFStringRef str);	/* Skips whitespace; returns 0.0 on error */
+CFArrayRef CFStringCreateArrayWithFindResults(CFAllocatorRef alloc, CFStringRef theString, CFStringRef stringToFind, CFRange rangeToSearch, CFOptionFlags compareOptions);
+
+CFRange CFStringFind(CFStringRef theString, CFStringRef stringToFind, CFOptionFlags compareOptions);
+
+Boolean CFStringHasPrefix(CFStringRef theString, CFStringRef prefix);
+
+Boolean CFStringHasSuffix(CFStringRef theString, CFStringRef suffix);
+
+CFRange CFStringGetRangeOfComposedCharactersAtIndex(CFStringRef theString, CFIndex theIndex);
+
+Boolean CFStringFindCharacterFromSet(CFStringRef theString, CFCharacterSetRef theSet, CFRange rangeToSearch, CFOptionFlags searchOptions, CFRange* result);
+
+void CFStringGetLineBounds(CFStringRef theString, CFRange range, CFIndex* lineBeginIndex, CFIndex* lineEndIndex, CFIndex* contentsEndIndex); 
+
+void CFStringGetParagraphBounds(CFStringRef string, CFRange range, CFIndex* parBeginIndex, CFIndex* parEndIndex, CFIndex* contentsEndIndex);
+
+CFIndex CFStringGetHyphenationLocationBeforeIndex(CFStringRef string, CFIndex location, CFRange limitRange, CFOptionFlags options, CFLocaleRef locale, UTF32Char* character);
+
+Boolean CFStringIsHyphenationAvailableForLocale(CFLocaleRef locale);
+
+CFStringRef CFStringCreateByCombiningStrings(CFAllocatorRef alloc, CFArrayRef theArray, CFStringRef separatorString);	/* Empty array returns empty string; one element array returns the element */
+
+CFArrayRef CFStringCreateArrayBySeparatingStrings(CFAllocatorRef alloc, CFStringRef theString, CFStringRef separatorString);	/* No separators in the string returns array with that string; string == sep returns two empty strings */
 
 
-extern(C) void CFStringAppend(CFMutableStringRef theString, CFStringRef appendedString);
+SInt32 CFStringGetIntValue(CFStringRef str);		/* Skips whitespace; returns 0 on error, MAX or -MAX on overflow */
 
-extern(C) void CFStringAppendCharacters(CFMutableStringRef theString, const(UniChar)* chars, CFIndex numChars);
+double CFStringGetDoubleValue(CFStringRef str);	/* Skips whitespace; returns 0.0 on error */
 
-extern(C) void CFStringAppendPascalString(CFMutableStringRef theString, ConstStr255Param pStr, CFStringEncoding encoding);
 
-extern(C) void CFStringAppendCString(CFMutableStringRef theString, const(char)* cStr, CFStringEncoding encoding);
+void CFStringAppend(CFMutableStringRef theString, CFStringRef appendedString);
 
-extern(C) void CFStringAppendFormat(CFMutableStringRef theString, CFDictionaryRef formatOptions, CFStringRef format, ...);
+void CFStringAppendCharacters(CFMutableStringRef theString, const(UniChar)* chars, CFIndex numChars);
 
-extern(C) void CFStringAppendFormatAndArguments(CFMutableStringRef theString, CFDictionaryRef formatOptions, CFStringRef format, va_list arguments);
+void CFStringAppendPascalString(CFMutableStringRef theString, ConstStr255Param pStr, CFStringEncoding encoding);
 
-extern(C) void CFStringInsert(CFMutableStringRef str, CFIndex idx, CFStringRef insertedStr);
+void CFStringAppendCString(CFMutableStringRef theString, const(char)* cStr, CFStringEncoding encoding);
 
-extern(C) void CFStringDelete(CFMutableStringRef theString, CFRange range);
+void CFStringAppendFormat(CFMutableStringRef theString, CFDictionaryRef formatOptions, CFStringRef format, ...);
 
-extern(C) void CFStringReplace(CFMutableStringRef theString, CFRange range, CFStringRef replacement);
+void CFStringAppendFormatAndArguments(CFMutableStringRef theString, CFDictionaryRef formatOptions, CFStringRef format, va_list arguments);
 
-extern(C) void CFStringReplaceAll(CFMutableStringRef theString, CFStringRef replacement);	/* Replaces whole string */
+void CFStringInsert(CFMutableStringRef str, CFIndex idx, CFStringRef insertedStr);
 
-extern(C) CFIndex CFStringFindAndReplace(CFMutableStringRef theString, CFStringRef stringToFind, CFStringRef replacementString, CFRange rangeToSearch, CFOptionFlags compareOptions);
+void CFStringDelete(CFMutableStringRef theString, CFRange range);
 
-extern(C) void CFStringSetExternalCharactersNoCopy(CFMutableStringRef theString, UniChar* chars, CFIndex length, CFIndex capacity);	/* Works only on specially created mutable strings! */
+void CFStringReplace(CFMutableStringRef theString, CFRange range, CFStringRef replacement);
 
-extern(C) void CFStringPad(CFMutableStringRef theString, CFStringRef padString, CFIndex length, CFIndex indexIntoPad);
+void CFStringReplaceAll(CFMutableStringRef theString, CFStringRef replacement);	/* Replaces whole string */
 
-extern(C) void CFStringTrim(CFMutableStringRef theString, CFStringRef trimString);
+CFIndex CFStringFindAndReplace(CFMutableStringRef theString, CFStringRef stringToFind, CFStringRef replacementString, CFRange rangeToSearch, CFOptionFlags compareOptions);
 
-extern(C) void CFStringTrimWhitespace(CFMutableStringRef theString);
+void CFStringSetExternalCharactersNoCopy(CFMutableStringRef theString, UniChar* chars, CFIndex length, CFIndex capacity);	/* Works only on specially created mutable strings! */
 
-extern(C) void CFStringLowercase(CFMutableStringRef theString, CFLocaleRef locale);
+void CFStringPad(CFMutableStringRef theString, CFStringRef padString, CFIndex length, CFIndex indexIntoPad);
 
-extern(C) void CFStringUppercase(CFMutableStringRef theString, CFLocaleRef locale);
+void CFStringTrim(CFMutableStringRef theString, CFStringRef trimString);
 
-extern(C) void CFStringCapitalize(CFMutableStringRef theString, CFLocaleRef locale);
+void CFStringTrimWhitespace(CFMutableStringRef theString);
 
-extern(C) void CFStringLowercase(CFMutableStringRef theString, const(void)* localeTBD); // localeTBD must be NULL on pre-10.3
+void CFStringLowercase(CFMutableStringRef theString, CFLocaleRef locale);
 
-extern(C) void CFStringUppercase(CFMutableStringRef theString, const(void)* localeTBD); // localeTBD must be NULL on pre-10.3
+void CFStringUppercase(CFMutableStringRef theString, CFLocaleRef locale);
 
-extern(C) void CFStringCapitalize(CFMutableStringRef theString, const(void)* localeTBD); // localeTBD must be NULL on pre-10.3
+void CFStringCapitalize(CFMutableStringRef theString, CFLocaleRef locale);
+
+void CFStringLowercase(CFMutableStringRef theString, const(void)* localeTBD); // localeTBD must be NULL on pre-10.3
+
+void CFStringUppercase(CFMutableStringRef theString, const(void)* localeTBD); // localeTBD must be NULL on pre-10.3
+
+void CFStringCapitalize(CFMutableStringRef theString, const(void)* localeTBD); // localeTBD must be NULL on pre-10.3
 
 enum {
 	kCFStringNormalizationFormD = 0, // Canonical Decomposition
@@ -264,12 +263,12 @@ enum {
 };
 alias CFIndex CFStringNormalizationForm;
 
-extern(C) void CFStringNormalize(CFMutableStringRef theString, CFStringNormalizationForm theForm);
+void CFStringNormalize(CFMutableStringRef theString, CFStringNormalizationForm theForm);
 
 
-extern(C) void CFStringFold(CFMutableStringRef theString, CFOptionFlags theFlags, CFLocaleRef theLocale);
+void CFStringFold(CFMutableStringRef theString, CFOptionFlags theFlags, CFLocaleRef theLocale);
 
-extern(C) Boolean CFStringTransform(CFMutableStringRef string, CFRange* range, CFStringRef transform, Boolean reverse);
+Boolean CFStringTransform(CFMutableStringRef string, CFRange* range, CFStringRef transform, Boolean reverse);
 
 extern(C) extern const CFStringRef kCFStringTransformStripCombiningMarks;
 extern(C) extern const CFStringRef kCFStringTransformToLatin;
@@ -289,25 +288,25 @@ extern(C) extern const CFStringRef kCFStringTransformToUnicodeName;
 extern(C) extern const CFStringRef kCFStringTransformStripDiacritics;
 
 
-extern(C) Boolean CFStringIsEncodingAvailable(CFStringEncoding encoding);
+Boolean CFStringIsEncodingAvailable(CFStringEncoding encoding);
 
-extern(C) const(CFStringEncoding)* CFStringGetListOfAvailableEncodings();
+const(CFStringEncoding)* CFStringGetListOfAvailableEncodings();
 
-extern(C) CFStringRef CFStringGetNameOfEncoding(CFStringEncoding encoding);
+CFStringRef CFStringGetNameOfEncoding(CFStringEncoding encoding);
 
-extern(C) uint CFStringConvertEncodingToNSStringEncoding(CFStringEncoding encoding);
+uint CFStringConvertEncodingToNSStringEncoding(CFStringEncoding encoding);
 
-extern(C) CFStringEncoding CFStringConvertNSStringEncodingToEncoding(uint encoding);
+CFStringEncoding CFStringConvertNSStringEncodingToEncoding(uint encoding);
 
-extern(C) UInt32 CFStringConvertEncodingToWindowsCodepage(CFStringEncoding encoding);
+UInt32 CFStringConvertEncodingToWindowsCodepage(CFStringEncoding encoding);
 
-extern(C) CFStringEncoding CFStringConvertWindowsCodepageToEncoding(UInt32 codepage);
+CFStringEncoding CFStringConvertWindowsCodepageToEncoding(UInt32 codepage);
 
-extern(C) CFStringEncoding CFStringConvertIANACharSetNameToEncoding(CFStringRef theString);
+CFStringEncoding CFStringConvertIANACharSetNameToEncoding(CFStringRef theString);
 
-extern(C) CFStringRef  CFStringConvertEncodingToIANACharSetName(CFStringEncoding encoding);
+CFStringRef  CFStringConvertEncodingToIANACharSetName(CFStringEncoding encoding);
 
-extern(C) CFStringEncoding CFStringGetMostCompatibleMacStringEncoding(CFStringEncoding encoding);
+CFStringEncoding CFStringGetMostCompatibleMacStringEncoding(CFStringEncoding encoding);
 
 
 enum __kCFStringInlineBufferLength = 64;
@@ -343,11 +342,36 @@ UniChar CFStringGetCharacterFromInlineBuffer(CFStringInlineBuffer* buf, CFIndex 
     return buf.buffer[idx - buf.bufferedRangeStart];
 }
 
+Boolean CFStringIsSurrogateHighCharacter(UniChar character) {
+    return ((character >= 0xD800UL) && (character <= 0xDBFFUL) ? true : false);
+}
+
+Boolean CFStringIsSurrogateLowCharacter(UniChar character) {
+    return ((character >= 0xDC00UL) && (character <= 0xDFFFUL) ? true : false);
+}
+
+UTF32Char CFStringGetLongCharacterForSurrogatePair(UniChar surrogateHigh, UniChar surrogateLow) {
+    return cast(UTF32Char)(((surrogateHigh - 0xD800UL) << 10) + (surrogateLow - 0xDC00UL) + 0x0010000UL);
+}
+
+Boolean CFStringGetSurrogatePairForLongCharacter(UTF32Char character, UniChar *surrogates) {
+    if ((character > 0xFFFFUL) && (character < 0x110000UL)) { // Non-BMP character
+        character -= 0x10000;
+        if (NULL != surrogates) {
+            surrogates[0] = cast(UniChar)((character >> 10) + 0xD800UL);
+            surrogates[1] = cast(UniChar)((character & 0x3FF) + 0xDC00UL);
+        }
+        return true;
+    } else {
+        if (NULL != surrogates) *surrogates = cast(UniChar)character;
+        return false;
+    }
+}
 
 
-extern(C) void CFShow(CFTypeRef obj);
+void CFShow(CFTypeRef obj);
 
-extern(C) void CFShowStr(CFStringRef str);
+void CFShowStr(CFStringRef str);
 
-extern(C) CFStringRef  __CFStringMakeConstantString(const(char)* cStr);	/* Private; do not use */
+CFStringRef  __CFStringMakeConstantString(const(char)* cStr);	/* Private; do not use */
 

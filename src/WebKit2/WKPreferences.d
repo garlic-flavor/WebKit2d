@@ -1,6 +1,6 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
@@ -188,4 +188,8 @@ bool WKPreferencesGetShouldRespectImageOrientation(WKPreferencesRef preferencesR
 // Defaults to false
 void WKPreferencesSetStorageBlockingPolicy(WKPreferencesRef preferencesRef, WKStorageBlockingPolicy policy);
 WKStorageBlockingPolicy WKPreferencesGetStorageBlockingPolicy(WKPreferencesRef preferencesRef);
+
+// Defaults to false
+void WKPreferencesSetPlugInSnapshottingEnabled(WKPreferencesRef preferencesRef, bool enabled);
+bool WKPreferencesGetPlugInSnapshottingEnabled(WKPreferencesRef preferencesRef);
 

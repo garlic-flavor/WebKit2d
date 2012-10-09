@@ -1,13 +1,13 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
 
 // Apple's Original License
 /*
- * Copyright (c) 2008 Apple Inc. All rights reserved.
+ * Copyright (c) 2012 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
  * 
@@ -28,8 +28,9 @@
  * 
  * @APPLE_LICENSE_HEADER_END@
  */
+
 /*	CFDictionary.h
-	Copyright 1998-1999, Apple Computer, Inc. All rights reserved.
+	Copyright (c) 1998-2012, Apple Inc. All rights reserved.
 */
 
 module CoreFoundation.CFDictionary;
@@ -76,41 +77,41 @@ alias const(__CFDictionary)* CFDictionaryRef;
 
 alias __CFDictionary* CFMutableDictionaryRef;
 
-extern(C) CFTypeID CFDictionaryGetTypeID();
+CFTypeID CFDictionaryGetTypeID();
 
-extern(C) CFDictionaryRef CFDictionaryCreate(CFAllocatorRef allocator, const(void)** keys, const(void)** values, CFIndex numValues, const(CFDictionaryKeyCallBacks)* keyCallBacks, const(CFDictionaryValueCallBacks)* valueCallBacks);
+CFDictionaryRef CFDictionaryCreate(CFAllocatorRef allocator, const(void)** keys, const(void)** values, CFIndex numValues, const(CFDictionaryKeyCallBacks)* keyCallBacks, const(CFDictionaryValueCallBacks)* valueCallBacks);
 
-extern(C) CFDictionaryRef CFDictionaryCreateCopy(CFAllocatorRef allocator, CFDictionaryRef theDict);
+CFDictionaryRef CFDictionaryCreateCopy(CFAllocatorRef allocator, CFDictionaryRef theDict);
 
-extern(C) CFMutableDictionaryRef CFDictionaryCreateMutable(CFAllocatorRef allocator, CFIndex capacity, const(CFDictionaryKeyCallBacks)* keyCallBacks, const(CFDictionaryValueCallBacks)* valueCallBacks);
+CFMutableDictionaryRef CFDictionaryCreateMutable(CFAllocatorRef allocator, CFIndex capacity, const(CFDictionaryKeyCallBacks)* keyCallBacks, const(CFDictionaryValueCallBacks)* valueCallBacks);
 
-extern(C) CFMutableDictionaryRef CFDictionaryCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFDictionaryRef theDict);
+CFMutableDictionaryRef CFDictionaryCreateMutableCopy(CFAllocatorRef allocator, CFIndex capacity, CFDictionaryRef theDict);
 
-extern(C) CFIndex CFDictionaryGetCount(CFDictionaryRef theDict);
+CFIndex CFDictionaryGetCount(CFDictionaryRef theDict);
 
-extern(C) CFIndex CFDictionaryGetCountOfKey(CFDictionaryRef theDict, const(void)* key);
+CFIndex CFDictionaryGetCountOfKey(CFDictionaryRef theDict, const(void)* key);
 
-extern(C) CFIndex CFDictionaryGetCountOfValue(CFDictionaryRef theDict, const(void)* value);
+CFIndex CFDictionaryGetCountOfValue(CFDictionaryRef theDict, const(void)* value);
 
-extern(C) Boolean CFDictionaryContainsKey(CFDictionaryRef theDict, const(void)* key);
+Boolean CFDictionaryContainsKey(CFDictionaryRef theDict, const(void)* key);
 
-extern(C) Boolean CFDictionaryContainsValue(CFDictionaryRef theDict, const(void)* value);
+Boolean CFDictionaryContainsValue(CFDictionaryRef theDict, const(void)* value);
 
-extern(C) const(void)* CFDictionaryGetValue(CFDictionaryRef theDict, const(void)* key);
+const(void)* CFDictionaryGetValue(CFDictionaryRef theDict, const(void)* key);
 
-extern(C) Boolean CFDictionaryGetValueIfPresent(CFDictionaryRef theDict, const(void)* key, const(void)** value);
+Boolean CFDictionaryGetValueIfPresent(CFDictionaryRef theDict, const(void)* key, const(void)** value);
 
-extern(C) void CFDictionaryGetKeysAndValues(CFDictionaryRef theDict, const(void)** keys, const(void)** values);
+void CFDictionaryGetKeysAndValues(CFDictionaryRef theDict, const(void)** keys, const(void)** values);
 
-extern(C) void CFDictionaryApplyFunction(CFDictionaryRef theDict, CFDictionaryApplierFunction applier, void* context);
+void CFDictionaryApplyFunction(CFDictionaryRef theDict, CFDictionaryApplierFunction applier, void* context);
 
-extern(C) void CFDictionaryAddValue(CFMutableDictionaryRef theDict, const(void)* key, const(void)* value);
+void CFDictionaryAddValue(CFMutableDictionaryRef theDict, const(void)* key, const(void)* value);
 
-extern(C) void CFDictionarySetValue(CFMutableDictionaryRef theDict, const(void)*key, const(void)* value);
+void CFDictionarySetValue(CFMutableDictionaryRef theDict, const(void)*key, const(void)* value);
 
-extern(C) void CFDictionaryReplaceValue(CFMutableDictionaryRef theDict, const(void)* key, const(void)* value);
+void CFDictionaryReplaceValue(CFMutableDictionaryRef theDict, const(void)* key, const(void)* value);
 
-extern(C) void CFDictionaryRemoveValue(CFMutableDictionaryRef theDict, const(void)* key);
+void CFDictionaryRemoveValue(CFMutableDictionaryRef theDict, const(void)* key);
 
-extern(C) void CFDictionaryRemoveAllValues(CFMutableDictionaryRef theDict);
+void CFDictionaryRemoveAllValues(CFMutableDictionaryRef theDict);
 

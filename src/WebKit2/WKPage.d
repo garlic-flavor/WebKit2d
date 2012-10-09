@@ -1,6 +1,6 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
@@ -50,6 +50,7 @@ alias extern(C) void function(WKPageRef page, WKBackForwardListItemRef item, WKT
 alias extern(C) void function(WKPageRef page, WKErrorCode errorCode, WKStringRef mimeType, WKStringRef pluginIdentifier, WKStringRef pluginVersion, const void* clientInfo) WKPagePluginDidFailCallback;
 alias extern(C) void function(WKPageRef page, WKFrameRef frame, WKIntentDataRef intent, WKTypeRef userData, const(void)* clientInfo) WKPageDidReceiveIntentForFrameCallback;
 alias extern(C) void function(WKPageRef page, WKFrameRef frame, WKIntentServiceInfoRef serviceInfo, WKTypeRef userData, const(void)* clientInfo) WKPageRegisterIntentServiceForFrameCallback;
+alias extern(C) void function(WKPageRef page, WKLayoutMilestones milestones, WKTypeRef userData, const(void)* clientInfo) WKPageDidLayoutCallback;
 
 // Deprecated
 alias extern(C) void function(WKPageRef page, WKStringRef mimeType, const void* clientInfo) WKPageDidFailToInitializePluginCallback_deprecatedForUseWithV0;
@@ -102,6 +103,8 @@ struct WKPageLoaderClient {
     // Version 2
     WKPageDidReceiveIntentForFrameCallback                              didReceiveIntentForFrame;
     WKPageRegisterIntentServiceForFrameCallback                         registerIntentServiceForFrame;
+
+    WKPageDidLayoutCallback                                             didLayout;
 }
 
 enum kWKPageLoaderClientCurrentVersion = 2;
@@ -130,7 +133,7 @@ alias extern(C) void function(WKPageRef page, WKFrameRef frame, WKFrameRef sourc
 struct WKPageFormClient
 {
     int                                                                 _version;
-    const void *                                                        clientInfo;
+    const(void)*                                                        clientInfo;
     WKPageWillSubmitFormCallback                                        willSubmitForm;
 }
 
@@ -147,7 +150,7 @@ alias extern(C) void function(WKPageRef page, WKFrameRef frame, ulong resourceId
 
 struct WKPageResourceLoadClient {
     int                                                                 _version;
-    const void *                                                        clientInfo;
+    const(void)*                                                        clientInfo;
     WKPageDidInitiateLoadForResourceCallback                            didInitiateLoadForResource;
     WKPageDidSendRequestForResourceCallback                             didSendRequestForResource;
     WKPageDidReceiveResponseForResourceCallback                         didReceiveResponseForResource;
@@ -158,12 +161,13 @@ struct WKPageResourceLoadClient {
 
 enum kWKPageResourceLoadClientCurrentVersion = 0;
 
-enum WKPluginUnavailabilityReason
+enum
 {
-    PluginMissing,
-    PluginCrashed,
-    InsecurePluginVersion
+    kWKPluginUnavailabilityReasonPluginMissing,
+    kWKPluginUnavailabilityReasonPluginCrashed,
+    kWKPluginUnavailabilityReasonInsecurePluginVersion
 }
+alias uint WKPluginUnavailabilityReason;
 
 // UI Client
 alias extern(C) WKPageRef function(WKPageRef page, WKURLRequestRef urlRequest, WKDictionaryRef features, WKEventModifiers modifiers, WKEventMouseButton mouseButton, const(void)* clientInfo) WKPageCreateNewPageCallback;
@@ -295,7 +299,7 @@ alias extern(C) void function(WKPageRef page, WKArrayRef proposedMenu, WKArrayRe
 
 struct WKPageContextMenuClient {
     int                                                                          _version;
-    const void *                                                                 clientInfo;
+    const(void)*                                                                 clientInfo;
 
     // Version 0
     WKPageGetContextMenuFromProposedContextMenuCallback_deprecatedForUseWithV0   getContextMenuFromProposedMenu_deprecatedForUseWithV0;
@@ -399,6 +403,8 @@ void WKPageSetFixedLayoutSize(WKPageRef page, WKSize size);
 bool WKPageUseFixedLayout(WKPageRef page);
 WKSize WKPageFixedLayoutSize(WKPageRef page);
 
+void WKPageListenForLayoutMilestones(WKPageRef page, WKLayoutMilestones milestones);
+
 bool WKPageHasHorizontalScrollbar(WKPageRef page);
 bool WKPageHasVerticalScrollbar(WKPageRef page);
 
@@ -414,7 +420,7 @@ bool WKPageIsContentEditable(WKPageRef page);
 
 void WKPageSetMaintainsInactiveSelection(WKPageRef page, bool maintainsInactiveSelection);
 void WKPageCenterSelectionInVisibleArea(WKPageRef page);
-    
+
 void WKPageFindString(WKPageRef page, WKStringRef string, WKFindOptions findOptions, uint maxMatchCount);
 void WKPageHideFindUI(WKPageRef page);
 void WKPageCountStringMatches(WKPageRef page, WKStringRef string, WKFindOptions findOptions, uint maxMatchCount);
@@ -461,7 +467,6 @@ void WKPageForceRepaint(WKPageRef page, void* context, WKPageForceRepaintFunctio
 void WKPageDeliverIntentToFrame(WKPageRef page, WKFrameRef frame, WKIntentDataRef intent);
 
 
-// state represents the state of the command in a menu (on is 1, off is 0, and mixed is -1), typically used to add a checkmark next to the menu item.
 alias extern(C) void function(WKStringRef command, bool isEnabled, int state, WKErrorRef, void* context) WKPageValidateCommandCallback;
 void WKPageValidateCommand(WKPageRef page, WKStringRef command, void* context, WKPageValidateCommandCallback callback);
 void WKPageExecuteCommand(WKPageRef page, WKStringRef command);

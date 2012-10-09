@@ -1,17 +1,15 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
 
 // Apple's Original License
 /*
- * Copyright (c) 2003 Apple Computer, Inc. All rights reserved.
+ * Copyright (c) 2012 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
- * 
- * Copyright (c) 1999-2003 Apple Computer, Inc.  All Rights Reserved.
  * 
  * This file contains Original Code and/or Modifications of Original Code
  * as defined in and that are subject to the Apple Public Source License
@@ -30,8 +28,14 @@
  * 
  * @APPLE_LICENSE_HEADER_END@
  */
+
 /*	CFTree.h
-	Copyright (c) 1998-2003, Apple, Inc. All rights reserved.
+	Copyright (c) 1998-2012, Apple Inc. All rights reserved.
+*/
+/*!
+        @header CFTree
+        CFTree implements a container which stores references to other CFTrees.
+        Each tree may have a parent, and a variable number of children.
 */
 module CoreFoundation.CFTree;
 
@@ -58,39 +62,39 @@ alias extern(C) void function(const(void)* value, void* context) CFTreeApplierFu
 alias void __CFTree;
 alias __CFTree* CFTreeRef;
 
-extern(C) CFTypeID CFTreeGetTypeID();
+CFTypeID CFTreeGetTypeID();
 
-extern(C) CFTreeRef CFTreeCreate(CFAllocatorRef allocator, const CFTreeContext* context);
+CFTreeRef CFTreeCreate(CFAllocatorRef allocator, const CFTreeContext* context);
 
-extern(C) CFTreeRef CFTreeGetParent(CFTreeRef tree);
+CFTreeRef CFTreeGetParent(CFTreeRef tree);
 
-extern(C) CFTreeRef CFTreeGetNextSibling(CFTreeRef tree);
+CFTreeRef CFTreeGetNextSibling(CFTreeRef tree);
 
-extern(C) CFTreeRef CFTreeGetFirstChild(CFTreeRef tree);
+CFTreeRef CFTreeGetFirstChild(CFTreeRef tree);
 
-extern(C) void CFTreeGetContext(CFTreeRef tree, CFTreeContext* context);
+void CFTreeGetContext(CFTreeRef tree, CFTreeContext* context);
 
-extern(C) CFIndex CFTreeGetChildCount(CFTreeRef tree);
+CFIndex CFTreeGetChildCount(CFTreeRef tree);
 
-extern(C) CFTreeRef CFTreeGetChildAtIndex(CFTreeRef tree, CFIndex idx);
+CFTreeRef CFTreeGetChildAtIndex(CFTreeRef tree, CFIndex idx);
 
-extern(C) void CFTreeGetChildren(CFTreeRef tree, CFTreeRef* children);
+void CFTreeGetChildren(CFTreeRef tree, CFTreeRef* children);
 
-extern(C) void CFTreeApplyFunctionToChildren(CFTreeRef tree, CFTreeApplierFunction applier, void* context);
+void CFTreeApplyFunctionToChildren(CFTreeRef tree, CFTreeApplierFunction applier, void* context);
 
-extern(C) CFTreeRef CFTreeFindRoot(CFTreeRef tree);
+CFTreeRef CFTreeFindRoot(CFTreeRef tree);
 
-extern(C) void CFTreeSetContext(CFTreeRef tree, const(CFTreeContext)* context);
+void CFTreeSetContext(CFTreeRef tree, const(CFTreeContext)* context);
 
-extern(C) void CFTreePrependChild(CFTreeRef tree, CFTreeRef newChild);
+void CFTreePrependChild(CFTreeRef tree, CFTreeRef newChild);
 
-extern(C) void CFTreeAppendChild(CFTreeRef tree, CFTreeRef newChild);
+void CFTreeAppendChild(CFTreeRef tree, CFTreeRef newChild);
 
-extern(C) void CFTreeInsertSibling(CFTreeRef tree, CFTreeRef newSibling);
+void CFTreeInsertSibling(CFTreeRef tree, CFTreeRef newSibling);
 
-extern(C) void CFTreeRemove(CFTreeRef tree);
+void CFTreeRemove(CFTreeRef tree);
 
-extern(C) void CFTreeRemoveAllChildren(CFTreeRef tree);
+void CFTreeRemoveAllChildren(CFTreeRef tree);
 
-extern(C) void CFTreeSortChildren(CFTreeRef tree, CFComparatorFunction comparator, void* context);
+void CFTreeSortChildren(CFTreeRef tree, CFComparatorFunction comparator, void* context);
 

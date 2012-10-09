@@ -1,13 +1,13 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
 
 // Apple's Original License
 /*
- * Copyright (c) 2009 Apple Inc. All rights reserved.
+ * Copyright (c) 2012 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
  * 
@@ -28,9 +28,11 @@
  * 
  * @APPLE_LICENSE_HEADER_END@
  */
+
 /*	CFLocale.h
-	Copyright (c) 2002-2009, Apple Inc. All rights reserved.
+	Copyright (c) 2002-2012, Apple Inc. All rights reserved.
 */
+
 module CoreFoundation.CFLocale;
 
 import CoreFoundation.CFBase;
@@ -42,33 +44,33 @@ extern(C):
 alias void __CFLocale;
 alias const(__CFLocale)* CFLocaleRef;
 
-extern(C) CFTypeID CFLocaleGetTypeID();
+CFTypeID CFLocaleGetTypeID();
 
-extern(C) CFLocaleRef CFLocaleGetSystem();
+CFLocaleRef CFLocaleGetSystem();
 
-extern(C) CFLocaleRef CFLocaleCopyCurrent();
+CFLocaleRef CFLocaleCopyCurrent();
 
-extern(C) CFArrayRef CFLocaleCopyAvailableLocaleIdentifiers();
+CFArrayRef CFLocaleCopyAvailableLocaleIdentifiers();
 
-extern(C) CFArrayRef CFLocaleCopyISOLanguageCodes();
+CFArrayRef CFLocaleCopyISOLanguageCodes();
 
-extern(C) CFArrayRef CFLocaleCopyISOCountryCodes();
+CFArrayRef CFLocaleCopyISOCountryCodes();
 
-extern(C) CFArrayRef CFLocaleCopyISOCurrencyCodes();
+CFArrayRef CFLocaleCopyISOCurrencyCodes();
 
-extern(C) CFArrayRef CFLocaleCopyCommonISOCurrencyCodes();
+CFArrayRef CFLocaleCopyCommonISOCurrencyCodes();
 
-extern(C) CFArrayRef CFLocaleCopyPreferredLanguages();
+CFArrayRef CFLocaleCopyPreferredLanguages();
 
-extern(C) CFStringRef CFLocaleCreateCanonicalLanguageIdentifierFromString(CFAllocatorRef allocator, CFStringRef localeIdentifier);
+CFStringRef CFLocaleCreateCanonicalLanguageIdentifierFromString(CFAllocatorRef allocator, CFStringRef localeIdentifier);
 
-extern(C) CFStringRef CFLocaleCreateCanonicalLocaleIdentifierFromString(CFAllocatorRef allocator, CFStringRef localeIdentifier) ;
+CFStringRef CFLocaleCreateCanonicalLocaleIdentifierFromString(CFAllocatorRef allocator, CFStringRef localeIdentifier) ;
 
-extern(C) CFStringRef CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes(CFAllocatorRef allocator, LangCode lcode, RegionCode rcode);
+CFStringRef CFLocaleCreateCanonicalLocaleIdentifierFromScriptManagerCodes(CFAllocatorRef allocator, LangCode lcode, RegionCode rcode);
 
-extern(C) CFStringRef CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode(CFAllocatorRef allocator, uint lcid);
+CFStringRef CFLocaleCreateLocaleIdentifierFromWindowsLocaleCode(CFAllocatorRef allocator, uint lcid);
 
-extern(C) uint CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier(CFStringRef localeIdentifier);
+uint CFLocaleGetWindowsLocaleCodeFromLocaleIdentifier(CFStringRef localeIdentifier);
 
 enum {
     kCFLocaleLanguageDirectionUnknown = 0,
@@ -79,23 +81,23 @@ enum {
 };
 alias CFIndex CFLocaleLanguageDirection;
 
-extern(C) CFLocaleLanguageDirection CFLocaleGetLanguageCharacterDirection(CFStringRef isoLangCode);
+CFLocaleLanguageDirection CFLocaleGetLanguageCharacterDirection(CFStringRef isoLangCode);
 
-extern(C) CFLocaleLanguageDirection CFLocaleGetLanguageLineDirection(CFStringRef isoLangCode);
+CFLocaleLanguageDirection CFLocaleGetLanguageLineDirection(CFStringRef isoLangCode);
 
-extern(C) CFDictionaryRef CFLocaleCreateComponentsFromLocaleIdentifier(CFAllocatorRef allocator, CFStringRef localeID);
+CFDictionaryRef CFLocaleCreateComponentsFromLocaleIdentifier(CFAllocatorRef allocator, CFStringRef localeID);
 
-extern(C) CFStringRef CFLocaleCreateLocaleIdentifierFromComponents(CFAllocatorRef allocator, CFDictionaryRef dictionary);
+CFStringRef CFLocaleCreateLocaleIdentifierFromComponents(CFAllocatorRef allocator, CFDictionaryRef dictionary);
 
-extern(C) CFLocaleRef CFLocaleCreate(CFAllocatorRef allocator, CFStringRef localeIdentifier);
+CFLocaleRef CFLocaleCreate(CFAllocatorRef allocator, CFStringRef localeIdentifier);
 
-extern(C) CFLocaleRef CFLocaleCreateCopy(CFAllocatorRef allocator, CFLocaleRef locale);
+CFLocaleRef CFLocaleCreateCopy(CFAllocatorRef allocator, CFLocaleRef locale);
 
-extern(C) CFStringRef CFLocaleGetIdentifier(CFLocaleRef locale);
+CFStringRef CFLocaleGetIdentifier(CFLocaleRef locale);
 
-extern(C) CFTypeRef CFLocaleGetValue(CFLocaleRef locale, CFStringRef key);
+CFTypeRef CFLocaleGetValue(CFLocaleRef locale, CFStringRef key);
 
-extern(C) CFStringRef CFLocaleCopyDisplayNameForPropertyValue(CFLocaleRef displayLocale, CFStringRef key, CFStringRef value);
+CFStringRef CFLocaleCopyDisplayNameForPropertyValue(CFLocaleRef displayLocale, CFStringRef key, CFStringRef value);
 
 extern(C) extern const CFStringRef kCFLocaleCurrentLocaleDidChangeNotification;
 

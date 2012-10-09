@@ -1,13 +1,13 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
 
 // Apple's Original License
 /*
- * Copyright (c) 2008 Apple Inc. All rights reserved.
+ * Copyright (c) 2012 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
  * 
@@ -28,8 +28,9 @@
  * 
  * @APPLE_LICENSE_HEADER_END@
  */
+
 /*	CFError.h
-	Copyright (c) 2006-2007, Apple Inc. All rights reserved.
+	Copyright (c) 2006-2012, Apple Inc. All rights reserved.
 */
 
 module CoreFoundation.CFError;
@@ -43,7 +44,7 @@ extern(C):
 alias void __CFError;
 alias __CFError* CFErrorRef;
 
-extern(C) CFTypeID CFErrorGetTypeID();
+CFTypeID CFErrorGetTypeID();
 
 
 extern(C) extern const CFStringRef kCFErrorDomainPOSIX;
@@ -58,6 +59,8 @@ extern(C) extern const CFStringRef kCFErrorLocalizedRecoverySuggestionKey;
 extern(C) extern const CFStringRef kCFErrorDescriptionKey;
 
 extern(C) extern const CFStringRef kCFErrorUnderlyingErrorKey;
+extern(C) extern const CFStringRef kCFErrorURLKey;
+extern(C) extern const CFStringRef kCFErrorFilePathKey;
 
 extern(C) CFErrorRef CFErrorCreate(CFAllocatorRef allocator, CFStringRef domain, CFIndex code, CFDictionaryRef userInfo);
 

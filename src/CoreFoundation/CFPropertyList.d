@@ -1,13 +1,13 @@
 /**
- * Version:      0.0001(dmd2.060)
- * Date:         2012-Oct-08 23:30:31
+ * Version:      0.0002(dmd2.060)
+ * Date:         2012-Oct-10 01:47:01
  * Authors:      KUMA
  * License:      CC0
 */
 
 // Apple's Original License
 /*
- * Copyright (c) 2009 Apple Inc. All rights reserved.
+ * Copyright (c) 2012 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
  * 
@@ -28,16 +28,19 @@
  * 
  * @APPLE_LICENSE_HEADER_END@
  */
-/*	CFPropertyList.h
-	Copyright (c) 1998-2009, Apple Inc. All rights reserved.
-*/
 
+/*	CFPropertyList.h
+	Copyright (c) 1998-2012, Apple Inc. All rights reserved.
+*/
 module CoreFoundation.CFPropertyList;
 
 import CoreFoundation.CFBase;
 import CoreFoundation.CFData;
 import CoreFoundation.CFString;
-import CoreFoundation.CFStream;
+version( OSX )
+{
+//	import CoreFoundation.CFStream;
+}
 import CoreFoundation.CFError;
 
 extern(C):
@@ -49,11 +52,11 @@ enum {
 }
 alias CFOptionFlags CFPropertyListMutabilityOptions;
 
-extern(C) CFPropertyListRef CFPropertyListCreateFromXMLData(CFAllocatorRef allocator, CFDataRef xmlData, CFOptionFlags mutabilityOption, CFStringRef* errorString);
+CFPropertyListRef CFPropertyListCreateFromXMLData(CFAllocatorRef allocator, CFDataRef xmlData, CFOptionFlags mutabilityOption, CFStringRef* errorString);
 
-extern(C) CFDataRef CFPropertyListCreateXMLData(CFAllocatorRef allocator, CFPropertyListRef propertyList);
+CFDataRef CFPropertyListCreateXMLData(CFAllocatorRef allocator, CFPropertyListRef propertyList);
 
-extern(C) CFPropertyListRef CFPropertyListCreateDeepCopy(CFAllocatorRef allocator, CFPropertyListRef propertyList, CFOptionFlags mutabilityOption);
+CFPropertyListRef CFPropertyListCreateDeepCopy(CFAllocatorRef allocator, CFPropertyListRef propertyList, CFOptionFlags mutabilityOption);
 
 enum {
     kCFPropertyListOpenStepFormat = 1,
@@ -62,12 +65,15 @@ enum {
 };
 alias CFIndex CFPropertyListFormat;
 
-extern(C) Boolean CFPropertyListIsValid(CFPropertyListRef plist, CFPropertyListFormat format);
+Boolean CFPropertyListIsValid(CFPropertyListRef plist, CFPropertyListFormat format);
 
-extern(C) CFIndex CFPropertyListWriteToStream(CFPropertyListRef propertyList, CFWriteStreamRef stream, CFPropertyListFormat format, CFStringRef* errorString);
+version( OSX )
+{
+CFIndex CFPropertyListWriteToStream(CFPropertyListRef propertyList, CFWriteStreamRef stream, CFPropertyListFormat format, CFStringRef* errorString);
 
 
-extern(C) CFPropertyListRef CFPropertyListCreateFromStream(CFAllocatorRef allocator, CFReadStreamRef stream, CFIndex streamLength, CFOptionFlags mutabilityOption, CFPropertyListFormat* format, CFStringRef* errorString);
+CFPropertyListRef CFPropertyListCreateFromStream(CFAllocatorRef allocator, CFReadStreamRef stream, CFIndex streamLength, CFOptionFlags mutabilityOption, CFPropertyListFormat* format, CFStringRef* errorString);
+}
 
 enum {
     kCFPropertyListReadCorruptError = 3840,              // Error parsing a property list
@@ -76,10 +82,13 @@ enum {
     kCFPropertyListWriteStreamError = 3851,              // Stream error writing a property list
 };
 
-extern(C) CFPropertyListRef CFPropertyListCreateWithData(CFAllocatorRef allocator, CFDataRef data, CFOptionFlags options, CFPropertyListFormat* format, CFErrorRef* error);
+CFPropertyListRef CFPropertyListCreateWithData(CFAllocatorRef allocator, CFDataRef data, CFOptionFlags options, CFPropertyListFormat* format, CFErrorRef* error);
 
-extern(C) CFPropertyListRef CFPropertyListCreateWithStream(CFAllocatorRef allocator, CFReadStreamRef stream, CFIndex streamLength, CFOptionFlags options, CFPropertyListFormat* format, CFErrorRef* error);
+version(OSX)
+{
+CFPropertyListRef CFPropertyListCreateWithStream(CFAllocatorRef allocator, CFReadStreamRef stream, CFIndex streamLength, CFOptionFlags options, CFPropertyListFormat* format, CFErrorRef* error);
 
-extern(C) CFIndex CFPropertyListWrite(CFPropertyListRef propertyList, CFWriteStreamRef stream, CFPropertyListFormat format, CFOptionFlags options, CFErrorRef *error);
+CFIndex CFPropertyListWrite(CFPropertyListRef propertyList, CFWriteStreamRef stream, CFPropertyListFormat format, CFOptionFlags options, CFErrorRef *error);
+}
 
-extern(C) CFDataRef CFPropertyListCreateData(CFAllocatorRef allocator, CFPropertyListRef propertyList, CFPropertyListFormat format, CFOptionFlags options, CFErrorRef *error);
+CFDataRef CFPropertyListCreateData(CFAllocatorRef allocator, CFPropertyListRef propertyList, CFPropertyListFormat format, CFOptionFlags options, CFErrorRef *error);
