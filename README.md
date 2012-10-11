@@ -31,6 +31,9 @@ Safari がインストールされている環境で実行してください。
 
 ## 更新履歴 ##
 
+- 2012/10/11 ver 0.0003(dmd2.060)
+  Makefile の書き替え。WebKit2d.lib を作るように。
+
 - 2012/10/10 ver 0.0002(dmd2.060)
   WebKit と CoreFoundation を新しいのに
 
