@@ -1,18 +1,18 @@
 ## MACRO
 TARGET = MiniBrowser.exe
 MAKE = make
-MAKEFILE = browser_exe.mak
+MAKEFILE = DLLLauncher.mak
 TO_COMPILE = src\DLLLauncher\DLLLauncherMain.d
 TO_LINK = src\DLLLauncher\DLLLauncherMain.obj
 COMPILE_FLAG = -version=Unicode -version=WindowsVista -Isrc;import
 LINK_FLAG =
-EXT_LIB = lib\AdvAPI32.Lib lib\ComCtl32.Lib lib\CoreFoundation.lib lib\Gdi32.Lib lib\WebKit.lib lib\win32.lib
+EXT_LIB = lib\AdvAPI32.Lib lib\win32.lib
 DDOC_FILE =
 FLAG =
 
 ## LINK COMMAND
 $(TARGET) : $(TO_LINK) $(EXT_LIB)
-	dmd -g $(LINK_FLAG) $(FLAG) -of$@ $**
+	dmd -g $(LINK_FLAG) $(FLAG) $(EXT_LIB) -of$@ $**
 
 ## COMPILE RULE
 .d.obj :
@@ -34,7 +34,7 @@ clean_obj :
 vwrite :
 	vwrite -ver="0.0001(dmd2.060)" -prj=$(TARGET) $(TO_COMPILE)
 ddoc :
-	dmd -c -o- -op -D -Dddoc $(COMPILE_FLAG) $(DDOC_FILE) $(TO_COMPILE) $(FLAG)
+	dmd -c -o- -op -D -Dd $(COMPILE_FLAG) $(DDOC_FILE) $(TO_COMPILE) $(FLAG)
 show :
 	@echo ROOT = src\DLLLauncher\DLLLauncherMain.d
 	@echo TARGET = $(TARGET)
@@ -42,9 +42,9 @@ show :
 run :
 	$(TARGET) $(FLAG)
 edit :
-	emacs $(TO_COMPILE)  browser_exe.mak
+	emacs $(TO_COMPILE)
 remake :
-	amm vwrite=0.0001(dmd2.060) gui makefile=browser_exe.mak MiniBrowser.exe .\src\DLLLauncher\DLLLauncherMain.d $(FLAG)
+	amm v=0.0001(dmd2.060) gui lib= lib\AdvAPI32.Lib lib\win32.lib DLLLauncher.mak MiniBrowser.exe .\src\DLLLauncher\DLLLauncherMain.d $(FLAG)
 
 debug :
 	ddbg $(TARGET)

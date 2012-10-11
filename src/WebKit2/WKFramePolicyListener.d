@@ -4,7 +4,7 @@
  * Authors:      KUMA
  * License:      CC0
 */
-module WebKit2.WKFramePolicyListaner;
+module WebKit2.WKFramePolicyListener;
 
 import WebKit2.WKBase;
 
